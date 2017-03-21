@@ -13,7 +13,6 @@ namespace IBU_Mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage
     {
-        private string _currentPage = "Overview";
         public MainPage()
         {
             InitializeComponent();
@@ -22,12 +21,16 @@ namespace IBU_Mobile
             {
                 if (MasterPage.IBUListView.SelectedItem != null)
                 {
-                    Detail =
-                        new NavigationPage(new OverviewPage()
-                        {
-                            Title = ((IBUMenuItem) args.SelectedItem).PageTitle
-                        });
-                    _currentPage = ((IBUMenuItem) args.SelectedItem).PageTitle;
+                    if (((IBUMenuItem) args.SelectedItem).PageTitle == "Grades")
+                    {
+                        Detail =
+                            new NavigationPage(new GradesPage());
+                    }
+                    else
+                    {
+                        Detail =
+                            new NavigationPage(new OverviewPage());
+                    }
                     MasterPage.IBUListView.SelectedItem = null;
                     if (Device.OS != TargetPlatform.Windows)
                         IsPresented = false;
@@ -38,10 +41,9 @@ namespace IBU_Mobile
         protected override bool OnBackButtonPressed()
         {
             if (IsPresented == false)
-                if (_currentPage != "Overview")
+                if (Detail.GetType() != typeof(OverviewPage))
                 {
-                    Detail = new NavigationPage(new OverviewPage() {Title = "Overview"});
-                    _currentPage = "Overview";
+                    Detail = new NavigationPage(new OverviewPage());
                 }
             if (IsPresented)
                 IsPresented = false;

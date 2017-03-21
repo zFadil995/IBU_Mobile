@@ -13,7 +13,11 @@ namespace IBU_Mobile
         {
             InitializeComponent();
 
-            MainPage = new IBU_Mobile.MainPage();
+            IBUData.SetUpData();
+
+            MainPage = new MainPage();
+            
+            IBUData.UpdateData();
         }
 
         protected override void OnStart()

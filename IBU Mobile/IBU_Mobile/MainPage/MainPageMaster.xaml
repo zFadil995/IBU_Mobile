@@ -55,8 +55,8 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" Margin="5, 5, 5, 15" Spacing="25">
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout.GestureRecognizers><TapGestureRecognizer Tapped="LogOutTapped"></TapGestureRecognizer></StackLayout.GestureRecognizers>
-                <Image Source="placeholder.png" HeightRequest="25" HorizontalOptions="EndAndExpand"></Image>
-                <Label TextColor="White" Text="LOG OUT" HorizontalOptions="StartAndExpand" FontAttributes="None" FontSize="20"></Label>
+                <Image Source="placeholder.png" HeightRequest="20" HorizontalOptions="EndAndExpand"></Image>
+                <Label TextColor="White" Text="LOG OUT" HorizontalOptions="StartAndExpand" FontAttributes="None" FontSize="17"></Label>
             </StackLayout>
         </StackLayout>
         <StackLayout BackgroundColor="#D0A650" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="End" Margin="0" HeightRequest="1"></StackLayout>
