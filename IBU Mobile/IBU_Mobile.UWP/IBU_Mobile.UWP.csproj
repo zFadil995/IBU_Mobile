@@ -117,6 +117,9 @@
     <Content Include="icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="menuicon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

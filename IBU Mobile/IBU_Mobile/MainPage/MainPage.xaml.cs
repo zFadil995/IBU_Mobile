@@ -19,29 +19,22 @@ namespace IBU_Mobile
 
             MasterPage.IBUListView.ItemSelected += (sender, args) =>
             {
+                MasterPage.IBUListView.IsEnabled = false;
                 if (MasterPage.IBUListView.SelectedItem != null)
                 {
-                    if (((IBUMenuItem) args.SelectedItem).PageTitle == "Grades")
-                    {
-                        Detail =
-                            new NavigationPage(new GradesPage());
-                    }
-                    else
-                    {
-                        Detail =
-                            new NavigationPage(new OverviewPage());
-                    }
+                    Detail = new NavigationPage((Page) Activator.CreateInstance(((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType));
                     MasterPage.IBUListView.SelectedItem = null;
-                    if (Device.OS != TargetPlatform.Windows)
-                        IsPresented = false;
+                    IsPresented = false;
                 }
+                MasterPage.IBUListView.IsEnabled = true;
             };
         }
 
         protected override bool OnBackButtonPressed()
         {
+            Type currentType = ((NavigationPage) Detail).CurrentPage.GetType();
             if (IsPresented == false)
-                if (Detail.GetType() != typeof(OverviewPage))
+                if (currentType != typeof(OverviewPage))
                 {
                     Detail = new NavigationPage(new OverviewPage());
                 }

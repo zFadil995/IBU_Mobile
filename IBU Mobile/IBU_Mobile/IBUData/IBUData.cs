@@ -14,10 +14,10 @@ namespace IBU_Mobile
         public static Overview Overview = new Overview();
         public static void SetUpData()
         {
-           Overview = JsonConvert.DeserializeObject<Overview>(Settings.OverviewData);
+            Overview = JsonConvert.DeserializeObject<Overview>(Settings.OverviewData);
         }
 
-        public static async void UpdateData()
+        public static void UpdateData()
         {
             UpdateOverview();
         }
@@ -26,17 +26,22 @@ namespace IBU_Mobile
         {
             try
             {
-                var client = new RestClient("https://jsonblob.com/api/jsonBlob/d89eeb62-0e52-11e7-a0ba-2dbdbe732c03");
-                client.UserAgent =
-                    "Mozilla/5.0 (Linux; Android 7.1.1; Nexus 6P Build/N4F26I) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.91 Mobile Safari/537.36";
-                var request = new RestRequest(Method.GET);
+                var client = new RestClient("http://54.244.213.136/overview.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
                 IRestResponse response = await client.Execute(request);
                 string data = response.Content;
-                Overview TempOverview = JsonConvert.DeserializeObject<Overview>(data);
-                if (Double.Parse(TempOverview.LastModified) > Double.Parse(Overview.LastModified))
+                Overview tempOverview = JsonConvert.DeserializeObject<Overview>(data);
+                if (tempOverview.StudentID == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                if (Overview == null || Double.Parse(tempOverview.LastModified) > Double.Parse(Overview.LastModified))
                 {
                     Settings.OverviewData = data;
-                    Overview = TempOverview;
+                    SetUpData();
                     if(CurrentPage.GetType() == typeof(OverviewPage))
                     {
                         ((OverviewPage)CurrentPage).SetUpAction.Invoke();
