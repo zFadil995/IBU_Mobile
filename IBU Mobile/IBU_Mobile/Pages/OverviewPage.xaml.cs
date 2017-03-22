@@ -20,9 +20,9 @@ namespace IBU_Mobile
         private void SetUp()
         {
             CoursesList.Children.Clear();
-            if (IBUData.Overview != null)
+            if (IBUData.OverviewData != null)
             {
-                foreach(string course in IBUData.Overview.Courses)
+                foreach(string course in IBUData.OverviewData.Courses)
                 {
                     CoursesList.Children.Add(new StackLayout()
                     {
@@ -45,14 +45,14 @@ namespace IBU_Mobile
                     });
                 }
 
-                StudentID.Text = IBUData.Overview.StudentID;
-                Email.Text = IBUData.Overview.Email;
-                Attendance.Text = IBUData.Overview.Attendance;
-                Nationality.Text = IBUData.Overview.Nationality;
+                StudentID.Text = IBUData.OverviewData.StudentID;
+                Email.Text = IBUData.OverviewData.Email;
+                Attendance.Text = IBUData.OverviewData.Attendance;
+                Nationality.Text = IBUData.OverviewData.Nationality;
 
-                TotalPrice.Text = IBUData.Overview.TotalPrice;
-                TotalPaid.Text = IBUData.Overview.TotalPaid;
-                TotalToPay.Text = IBUData.Overview.TotalToPay;
+                TotalPrice.Text = IBUData.OverviewData.TotalPrice;
+                TotalPaid.Text = IBUData.OverviewData.TotalPaid;
+                TotalToPay.Text = IBUData.OverviewData.TotalToPay;
             }
         }
 
@@ -60,7 +60,7 @@ namespace IBU_Mobile
         {
             get
             {
-                return new Action(() => SetUp());
+                return new Action(SetUp);
             }
         }
     }

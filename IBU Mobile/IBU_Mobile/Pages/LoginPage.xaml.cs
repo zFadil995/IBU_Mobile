@@ -40,7 +40,7 @@ namespace IBU_Mobile
 
                 if (token.token == "An error occured." || token.token == "Incorrect Student ID or Password!" || token.token.Length < 64)
                 {
-                    await DisplayAlert("Warning", data, "OK");
+                    await DisplayAlert("Warning", token.token, "OK");
                 }
                 else
                 {

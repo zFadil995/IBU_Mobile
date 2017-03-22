@@ -6,33 +6,19 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using IBU_Mobile.Helpers;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace IBU_Mobile
+namespace IBU_Mobile.Pages
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GradesPage : ContentPage
+    public partial class DocumentRequestPage : ContentPage
     {
-        public GradesPage()
+        public DocumentRequestPage()
         {
             InitializeComponent();
-            IBUData.CurrentPage = this;
-            SetUp();
-        }
-
-        private void SetUp()
-        {
-        }
-
-        public Action SetUpAction
-        {
-            get
-            {
-                return new Action(SetUp);
-            }
         }
     }
 }

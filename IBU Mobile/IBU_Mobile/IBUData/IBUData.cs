@@ -11,15 +11,18 @@ namespace IBU_Mobile
     public static class IBUData
     {
         public static Page CurrentPage;
-        public static Overview Overview = new Overview();
+        public static OverviewData OverviewData = new OverviewData();
+        public static GradesData GradesData = new GradesData();
         public static void SetUpData()
         {
-            Overview = JsonConvert.DeserializeObject<Overview>(Settings.OverviewData);
+            OverviewData = JsonConvert.DeserializeObject<OverviewData>(Settings.OverviewData);
+            GradesData = JsonConvert.DeserializeObject<GradesData>(Settings.GradesData);
         }
 
         public static void UpdateData()
         {
             UpdateOverview();
+            UpdateGrades();
         }
 
         private static async void UpdateOverview()
@@ -32,17 +35,17 @@ namespace IBU_Mobile
                 request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
                 IRestResponse response = await client.Execute(request);
                 string data = response.Content;
-                Overview tempOverview = JsonConvert.DeserializeObject<Overview>(data);
-                if (tempOverview.StudentID == "Invalid Token!")
+                OverviewData tempOverviewData = JsonConvert.DeserializeObject<OverviewData>(data);
+                if (tempOverviewData.LastModified == "Invalid Token!")
                 {
                     CurrentApp.Current.LogOutAction.Invoke();
                     return;
                 }
-                if (Overview == null || Double.Parse(tempOverview.LastModified) > Double.Parse(Overview.LastModified))
+                if (OverviewData == null || OverviewData.LastModified == null || Double.Parse(tempOverviewData.LastModified) > Double.Parse(OverviewData.LastModified))
                 {
                     Settings.OverviewData = data;
                     SetUpData();
-                    if(CurrentPage.GetType() == typeof(OverviewPage))
+                    if (CurrentPage.GetType() == typeof(OverviewPage))
                     {
                         ((OverviewPage)CurrentPage).SetUpAction.Invoke();
                     }
@@ -54,9 +57,43 @@ namespace IBU_Mobile
                 //Oh Well... Maybe no internet?
             }
         }
+        private static async void UpdateGrades()
+        {
+            try
+            {
+                var client = new RestClient("http://54.244.213.136/grades.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if(GradesData.LastModified != null)
+                    request.AddParameter("LastModified", GradesData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                GradesData tempGradesData = JsonConvert.DeserializeObject<GradesData>(data);
+                if (tempGradesData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                if (GradesData == null || GradesData.LastModified == null || Double.Parse(tempGradesData.LastModified) > Double.Parse(GradesData.LastModified))
+                {
+                    Settings.GradesData = data;
+                    SetUpData();
+                    if (CurrentPage.GetType() == typeof(GradesPage))
+                    {
+                        ((GradesPage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                string exception = e.Message;
+                //Oh Well... Maybe no internet?
+            }
+        }
     }
 
-    public class Overview
+    public class OverviewData
     {
         public string LastModified { get; set; }
         public string[] Courses { get; set; }
@@ -68,5 +105,21 @@ namespace IBU_Mobile
         public string TotalPaid { get; set; }
         public string TotalToPay { get; set; }
 
+    }
+
+    public class GradesData
+    {
+        public string LastModified { get; set; }
+        public Grades[] Grades { get; set; }
+    }
+
+    public class Grades
+    {
+        public string StudentID { get; set; }
+        public string CourseCode { get; set; }
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public string Percent { get; set; }
+        public string Grade { get; set; }
     }
 }
