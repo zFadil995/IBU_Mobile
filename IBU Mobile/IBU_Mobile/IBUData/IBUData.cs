@@ -32,6 +32,8 @@ namespace IBU_Mobile
                 var client = new RestClient("http://54.244.213.136/overview.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (OverviewData?.LastModified != null)
+                    request.AddParameter("LastModified", OverviewData.LastModified, ParameterType.GetOrPost);
                 request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
                 IRestResponse response = await client.Execute(request);
                 string data = response.Content;
@@ -64,7 +66,7 @@ namespace IBU_Mobile
                 var client = new RestClient("http://54.244.213.136/grades.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                if(GradesData.LastModified != null)
+                if(GradesData?.LastModified != null)
                     request.AddParameter("LastModified", GradesData.LastModified, ParameterType.GetOrPost);
                 request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
                 IRestResponse response = await client.Execute(request);
@@ -115,8 +117,8 @@ namespace IBU_Mobile
 
     public class Grades
     {
-        public string StudentID { get; set; }
-        public string CourseCode { get; set; }
+        public string Semester { get; set; }
+        public string Course { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
         public string Percent { get; set; }
