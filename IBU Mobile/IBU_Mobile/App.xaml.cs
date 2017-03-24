@@ -48,7 +48,7 @@ namespace IBU_Mobile
         {
             get
             {
-                return new Action(() => { Settings.OverviewData = String.Empty; Settings.GradesData = String.Empty; Settings.Token = String.Empty; LoadApp(); });
+                return new Action(() => { Settings.UserData = String.Empty; Settings.OverviewData = String.Empty; Settings.GradesData = String.Empty; Settings.Token = String.Empty; LoadApp(); });
             }
         }
 

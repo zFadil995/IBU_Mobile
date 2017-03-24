@@ -15,12 +15,14 @@ namespace IBU_Mobile
     public partial class MainPageMaster : ContentPage
     {
         public ListView IBUListView => IBUMainMenu;
+        public Image IBUMessagesIcon => MessagesIcon;
         public MainPageMaster()
         {
             InitializeComponent();
+            IBUData.MainPage = this;
             IBUMainMenu.ItemsSource= new ObservableCollection<IBUMenuItem>(new[]
             {
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "OverviewData", TargetType = typeof(OverviewPage)},
+                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Overview", TargetType = typeof(OverviewPage)},
                     new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Grades", TargetType = typeof(GradesPage)},
                     new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Attendance", TargetType = typeof(AttendancePage)},
                     new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Messages", TargetType = typeof(MessagesPage)},
@@ -28,12 +30,35 @@ namespace IBU_Mobile
                     new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Document Request", TargetType = typeof(DocumentRequestPage)},
                 });
             
-            ;
+            SetUp();
         }
 
         private void LogOutTapped(object sender, EventArgs e)
         {
             CurrentApp.Current.LogOutAction.Invoke();
+        }
+
+        private void SetUp()
+        {
+            if (IBUData.UserData != null)
+            {
+                StudentImage.Source = IBUData.UserData.ImagePath;
+                StudentName.Text = IBUData.UserData.FirstName + " " + IBUData.UserData.LastName;
+                StudentID.Text = IBUData.UserData.StudentID;
+            }
+
+        }
+
+        public Action SetUpAction
+        {
+            get
+            {
+                return new Action(SetUp);
+            }
+        }
+
+        private void MessagesTapped(object sender, EventArgs e)
+        {
         }
     }
     public class IBUMenuItem

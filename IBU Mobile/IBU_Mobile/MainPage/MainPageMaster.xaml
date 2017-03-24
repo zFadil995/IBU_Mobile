@@ -8,7 +8,7 @@
     <StackLayout Orientation="Vertical" BackgroundColor="#1A6CBF" Spacing="0" Margin="0">
         <RelativeLayout x:Name="BannerLayout"  HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
             <Image x:Name="BannerImage" Source="banner.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"/>
-            <controls:CircleImage HorizontalOptions="Center" VerticalOptions="Start" Source="face.png" Aspect="AspectFit"  BorderColor="White" BorderThickness="1" 
+            <controls:CircleImage x:Name="StudentImage" HorizontalOptions="Center" VerticalOptions="Start" Source="blank.png" Aspect="AspectFit"  BorderColor="White" BorderThickness="1" 
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.8, Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
@@ -22,10 +22,10 @@
                     ElementName=BannerImage, Property=Height, Factor=0.7, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.1125, Constant=0}">
-                <Label Text="Fadil Žilić" FontAttributes="Bold" TextColor="#EEEEEE" VerticalOptions="EndAndExpand" FontSize="20"></Label>
-                <Label Text="301014015" TextColor="#DDDDDD" FontSize="15" VerticalOptions="StartAndExpand"></Label>
+                <Label x:Name="StudentName" Text="..." FontAttributes="Bold" TextColor="#EEEEEE" VerticalOptions="EndAndExpand" FontSize="20"></Label>
+                <Label x:Name="StudentID" Text="..." TextColor="#DDDDDD" FontSize="15" VerticalOptions="StartAndExpand"></Label>
             </StackLayout>
-            <Image Source="messages.png" HeightRequest="25"
+            <Image x:Name="MessagesIcon" Source="messages.png" HeightRequest="25"
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.15, Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
@@ -33,7 +33,7 @@
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.7, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Width, Factor=0.85, Constant=0}"></Image>
+                    ElementName=BannerImage, Property=Width, Factor=0.85, Constant=0}"><TapGestureRecognizer Tapped="MessagesTapped"></TapGestureRecognizer></Image>
 
         </RelativeLayout>
 

@@ -21,6 +21,15 @@ namespace IBU_Mobile.Helpers
             set { AppSettings.AddOrUpdateValue<string>(_token, value); }
         }
 
+        private const string _userData = "UserData";
+        private static readonly string _userDataDefault = String.Empty;
+
+        public static string UserData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_userData, _userDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_userData, value); }
+        }
+
         private const string _overviewData = "OverviewData";
         private static readonly string _overviewDataDefault = String.Empty;
 

@@ -111,6 +111,7 @@
     <Content Include="banner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="blank.png" />
     <Content Include="face.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
