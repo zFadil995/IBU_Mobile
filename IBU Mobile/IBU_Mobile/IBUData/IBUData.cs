@@ -120,18 +120,23 @@ namespace IBU_Mobile
         public static async void SetUpGrades()
         {
             GradesData = JsonConvert.DeserializeObject<GradesData>(Settings.GradesData);
-
-            GradesData.CurrentSemester.Courses =
-                GradesData.CurrentSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
-
-            foreach (Semesters gradesDataPreviousSemester in GradesData.PreviousSemesters)
+            if (GradesData != null)
             {
-                gradesDataPreviousSemester.Courses = gradesDataPreviousSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
+                GradesData.CurrentSemester.Courses =
+                    GradesData.CurrentSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
+
+                foreach (Semesters gradesDataPreviousSemester in GradesData.PreviousSemesters)
+                {
+                    gradesDataPreviousSemester.Courses =
+                        gradesDataPreviousSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
+                }
+
+                GradesData.PreviousSemesters =
+                    GradesData.PreviousSemesters.OrderBy(semester => semester.Year)
+                        .ThenBy(semester => semester.Semester)
+                        .Reverse()
+                        .ToArray();
             }
-
-            GradesData.PreviousSemesters =
-                GradesData.PreviousSemesters.OrderBy(semester => semester.Year).ThenBy(semester => semester.Semester).Reverse().ToArray();
-
         }
         private static async void UpdateGrades()
         {

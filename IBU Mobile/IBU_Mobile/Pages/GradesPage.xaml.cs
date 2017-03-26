@@ -208,6 +208,15 @@ namespace IBU_Mobile
                             },
                             3, 0
                         );
+                        //gradesGrid.Children.Add(new StackLayout()
+                        //{
+                        //    Orientation = StackOrientation.Vertical,
+                        //    HorizontalOptions = LayoutOptions.FillAndExpand,
+                        //    VerticalOptions = LayoutOptions.Start,
+                        //    HeightRequest = 1,
+                        //    BackgroundColor = Color.FromHex("#111111")
+                        //}, 0, 3, 0, 0
+                        //);
 
                         int row = 0;
                         float points = 0;
