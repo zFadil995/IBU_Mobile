@@ -19,6 +19,7 @@ namespace IBU_Mobile.Pages
         public MessagesPage()
         {
             InitializeComponent();
+            ToolbarItems.Add(IBUData.MessagesToolbar);
         }
     }
     

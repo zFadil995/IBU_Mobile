@@ -19,6 +19,7 @@ namespace IBU_Mobile
         public AttendancePage()
         {
             InitializeComponent();
+            ToolbarItems.Add(IBUData.AttendanceToolbar);
         }
     }
 }

@@ -13,8 +13,16 @@ namespace IBU_Mobile
         public OverviewPage()
         {
             InitializeComponent();
-            IBUData.CurrentPage = this;
             SetUp();
+
+            ToolbarItems.Add(IBUData.OverviewToolbar);
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IBUData.CurrentPage = this;
         }
 
         private void SetUp()

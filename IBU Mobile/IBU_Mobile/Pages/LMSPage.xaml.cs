@@ -19,6 +19,7 @@ namespace IBU_Mobile.Pages
         public LMSPage()
         {
             InitializeComponent();
+            ToolbarItems.Add(IBUData.LMSToolbar);
         }
     }
 

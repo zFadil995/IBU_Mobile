@@ -112,12 +112,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
+    <Content Include="down.png" />
     <Content Include="face.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="failure.png" />
     <Content Include="icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="loading.png" />
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -165,6 +168,8 @@
     <Content Include="splash_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="success.png" />
+    <Content Include="up.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -18,8 +18,9 @@ namespace IBU_Mobile
             InitializeComponent();
 
             TapGestureRecognizer messagesTapped = new TapGestureRecognizer();
-            messagesTapped.Tapped += (s, e) => {
-                if (((NavigationPage)Detail).CurrentPage.GetType() != typeof(MessagesPage))
+            messagesTapped.Tapped += (s, e) =>
+            {
+                if (((NavigationPage) Detail).CurrentPage.GetType() != typeof(MessagesPage))
                 {
                     Detail = new NavigationPage(new MessagesPage());
                 }
@@ -27,14 +28,15 @@ namespace IBU_Mobile
                     IsPresented = false;
             };
             MasterPage.IBUMessagesIcon.GestureRecognizers.Add(messagesTapped);
-            
+
 
             MasterPage.IBUListView.ItemSelected += (sender, args) =>
             {
                 MasterPage.IBUListView.IsEnabled = false;
                 if (MasterPage.IBUListView.SelectedItem != null)
                 {
-                    if (((NavigationPage) Detail).CurrentPage.GetType() != ((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType)
+                    if (((NavigationPage) Detail).CurrentPage.GetType() !=
+                        ((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType)
                     {
                         Detail =
                             new NavigationPage(
@@ -51,7 +53,7 @@ namespace IBU_Mobile
         protected override bool OnBackButtonPressed()
         {
             if (IsPresented == false)
-                if (((NavigationPage)Detail).CurrentPage.GetType() != typeof(OverviewPage))
+                if (((NavigationPage) Detail).CurrentPage.GetType() != typeof(OverviewPage))
                 {
                     Detail = new NavigationPage(new OverviewPage());
                 }

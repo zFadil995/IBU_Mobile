@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using Xamarin.Forms;
 using IBU_Mobile.Helpers;
 using Newtonsoft.Json;
 using RestSharp.Portable;
 using RestSharp.Portable.HttpClient;
 using System.Threading.Tasks;
+using IBU_Mobile.Pages;
 
 namespace IBU_Mobile
 {
@@ -13,6 +15,11 @@ namespace IBU_Mobile
         public static Page CurrentPage;
         public static Page MainPage;
         public static OverviewData OverviewData = new OverviewData();
+        public static ToolbarItem OverviewToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateOverview);
+        public static ToolbarItem GradesToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateGrades);
+        public static ToolbarItem AttendanceToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
+        public static ToolbarItem MessagesToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
+        public static ToolbarItem LMSToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
         public static GradesData GradesData = new GradesData();
         public static UserData UserData = new UserData();
         public static void SetUpData()
@@ -49,7 +56,7 @@ namespace IBU_Mobile
                     CurrentApp.Current.LogOutAction.Invoke();
                     return;
                 }
-                if (UserData?.LastModified == null || Double.Parse(tempUserData.LastModified) > Double.Parse(UserData.LastModified))
+                else if (UserData?.LastModified == null || Double.Parse(tempUserData.LastModified) > Double.Parse(UserData.LastModified))
                 {
                     Settings.UserData = data;
                     SetUpUser();
@@ -89,7 +96,7 @@ namespace IBU_Mobile
                     CurrentApp.Current.LogOutAction.Invoke();
                     return;
                 }
-                if (OverviewData?.LastModified == null || Double.Parse(tempOverviewData.LastModified) > Double.Parse(OverviewData.LastModified))
+                else if (OverviewData?.LastModified == null || Double.Parse(tempOverviewData.LastModified) > Double.Parse(OverviewData.LastModified))
                 {
                     Settings.OverviewData = data;
                     SetUpOverview();
@@ -98,9 +105,14 @@ namespace IBU_Mobile
                         ((OverviewPage)CurrentPage).SetUpAction.Invoke();
                     }
                 }
+
+                OverviewToolbar.Icon = "success.png";
+                OverviewToolbar.Text = "Successfully Loaded";
             }
             catch (Exception e)
             {
+                OverviewToolbar.Icon = "failure.png";
+                OverviewToolbar.Text = "Loading Failed";
                 string exception = e.Message;
                 //Oh Well... Maybe no internet?
             }
@@ -108,6 +120,18 @@ namespace IBU_Mobile
         public static async void SetUpGrades()
         {
             GradesData = JsonConvert.DeserializeObject<GradesData>(Settings.GradesData);
+
+            GradesData.CurrentSemester.Courses =
+                GradesData.CurrentSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
+
+            foreach (Semesters gradesDataPreviousSemester in GradesData.PreviousSemesters)
+            {
+                gradesDataPreviousSemester.Courses = gradesDataPreviousSemester.Courses.OrderBy(course => course.CourseCode).ToArray();
+            }
+
+            GradesData.PreviousSemesters =
+                GradesData.PreviousSemesters.OrderBy(semester => semester.Year).ThenBy(semester => semester.Semester).Reverse().ToArray();
+
         }
         private static async void UpdateGrades()
         {
@@ -127,7 +151,7 @@ namespace IBU_Mobile
                     CurrentApp.Current.LogOutAction.Invoke();
                     return;
                 }
-                if (GradesData?.LastModified == null || Double.Parse(tempGradesData.LastModified) > Double.Parse(GradesData.LastModified))
+                else if (GradesData?.LastModified == null || Double.Parse(tempGradesData.LastModified) > Double.Parse(GradesData.LastModified))
                 {
                     Settings.GradesData = data;
                     SetUpGrades();
@@ -136,9 +160,13 @@ namespace IBU_Mobile
                         ((GradesPage)CurrentPage).SetUpAction.Invoke();
                     }
                 }
+                GradesToolbar.Icon = "success.png";
+                GradesToolbar.Text = "Successfully Loaded";
             }
             catch (Exception e)
             {
+                GradesToolbar.Icon = "failure.png";
+                GradesToolbar.Text = "Loading Failed";
                 string exception = e.Message;
             }
         }
@@ -170,16 +198,31 @@ namespace IBU_Mobile
     public class GradesData
     {
         public string LastModified { get; set; }
+        public Semesters CurrentSemester { get; set; }
+        public Semesters[] PreviousSemesters { get; set; }
+    }
+
+    public class Semesters
+    {
+        public int Year { get; set; }
+        public int Semester { get; set; }
+        public Courses[] Courses { get; set; }
+
+    }
+
+    public class Courses
+    {
+        public string CourseCode { get; set; }
+        public string CourseName { get; set; }
+        public int FinalGrade { get; set; }
         public Grades[] Grades { get; set; }
     }
 
     public class Grades
     {
-        public string Semester { get; set; }
-        public string Course { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
-        public string Percent { get; set; }
-        public string Grade { get; set; }
+        public int Percent { get; set; }
+        public int Grade { get; set; }
     }
 }
