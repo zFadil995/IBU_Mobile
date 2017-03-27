@@ -110,11 +110,13 @@
   <ItemGroup>
     <Content Include="academic.png" />
     <Content Include="attendance.png" />
+    <Content Include="attendancewhite.png" />
     <Content Include="banner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
     <Content Include="document.png" />
+    <Content Include="documentwhite.png" />
     <Content Include="down.png" />
     <Content Include="email.png" />
     <Content Include="face.PNG">
@@ -127,6 +129,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="lms.png" />
+    <Content Include="lmswhite.png" />
     <Content Include="loading.png" />
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -135,6 +138,7 @@
     <Content Include="messages.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="messageswhite.png" />
     <Content Include="nationality.png" />
     <Content Include="overview.png" />
     <Content Include="Properties\Default.rd.xml" />

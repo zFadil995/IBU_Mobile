@@ -14,19 +14,24 @@ namespace IBU_Mobile
     {
         public static Page CurrentPage;
         public static Page MainPage;
+        public static UserData UserData = new UserData();
         public static OverviewData OverviewData = new OverviewData();
+        public static GradesData GradesData = new GradesData();
+        public static DocumentsData DocumentsData = new DocumentsData();
+
         public static ToolbarItem OverviewToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateOverview);
         public static ToolbarItem GradesToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateGrades);
         public static ToolbarItem AttendanceToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
         public static ToolbarItem MessagesToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
         public static ToolbarItem LMSToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
-        public static GradesData GradesData = new GradesData();
-        public static UserData UserData = new UserData();
+        public static ToolbarItem DocumentsToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
+
         public static void SetUpData()
         {
             SetUpUser();
             SetUpOverview();
             SetUpGrades();
+            SetUpDocuments();
         }
 
         public static void UpdateData()
@@ -34,6 +39,7 @@ namespace IBU_Mobile
             UpdateUser();
             UpdateOverview();
             UpdateGrades();
+            UpdateDocuments();
         }
 
         public static async void SetUpUser()
@@ -145,7 +151,7 @@ namespace IBU_Mobile
                 var client = new RestClient("http://54.244.213.136/grades.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                if(GradesData?.LastModified != null)
+                if (GradesData?.LastModified != null)
                     request.AddParameter("LastModified", GradesData.LastModified, ParameterType.GetOrPost);
                 request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
                 IRestResponse response = await client.Execute(request);
@@ -172,6 +178,49 @@ namespace IBU_Mobile
             {
                 GradesToolbar.Icon = "failure.png";
                 GradesToolbar.Text = "Loading Failed";
+                string exception = e.Message;
+            }
+        }
+
+        public static async void SetUpDocuments()
+        {
+            DocumentsData = JsonConvert.DeserializeObject<DocumentsData>(Settings.DocumentsData);
+        }
+
+        private static async void UpdateDocuments()
+        {
+            try
+            {
+                var client = new RestClient("http://54.244.213.136/documents.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (DocumentsData?.LastModified != null)
+                    request.AddParameter("LastModified", DocumentsData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                DocumentsData tempDocumentsData = JsonConvert.DeserializeObject<DocumentsData>(data);
+                if (tempDocumentsData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                else if (DocumentsData?.LastModified == null || Double.Parse(tempDocumentsData.LastModified) > Double.Parse(DocumentsData.LastModified))
+                {
+                    Settings.DocumentsData = data;
+                    SetUpDocuments();
+                    if (CurrentPage.GetType() == typeof(DocumentRequestPage))
+                    {
+                        ((DocumentRequestPage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+                DocumentsToolbar.Icon = "success.png";
+                DocumentsToolbar.Text = "Successfully Loaded";
+            }
+            catch (Exception e)
+            {
+                DocumentsToolbar.Icon = "failure.png";
+                DocumentsToolbar.Text = "Loading Failed";
                 string exception = e.Message;
             }
         }
@@ -229,5 +278,22 @@ namespace IBU_Mobile
         public string Type { get; set; }
         public int Percent { get; set; }
         public int Grade { get; set; }
+    }
+
+    public class DocumentsData
+    {
+        public string LastModified { get; set; }
+        public Documents[] Documents { get; set; }
+    }
+
+    public class Documents
+    {
+        public int DocumentType { get; set; }
+        public int Turkish { get; set; }
+        public int English { get; set; }
+        public int Bosnian { get; set; }
+        public int Number { get; set; }
+        public string Date { get; set; }
+        public int Status { get; set; }
     }
 }

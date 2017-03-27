@@ -4,8 +4,17 @@
              x:Class="IBU_Mobile.AttendancePage"
              Title="Attendance">
     <ScrollView  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="#0052A5">
-        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-            <Label Text="ATTENDANCE" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+            <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
+                    <Image Source="attendancewhite.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
+                    <Label Text="Attendance" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White" Padding="5, 10, 5, 10">
+
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>
