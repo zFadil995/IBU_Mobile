@@ -208,17 +208,23 @@ namespace IBU_Mobile
                             },
                             3, 0
                         );
-                        //gradesGrid.Children.Add(new StackLayout()
-                        //{
-                        //    Orientation = StackOrientation.Vertical,
-                        //    HorizontalOptions = LayoutOptions.FillAndExpand,
-                        //    VerticalOptions = LayoutOptions.Start,
-                        //    HeightRequest = 1,
-                        //    BackgroundColor = Color.FromHex("#111111")
-                        //}, 0, 3, 0, 0
-                        //);
 
-                        int row = 0;
+
+                        gradesGrid.RowDefinitions.Add(new RowDefinition()
+                        {
+                            Height = new GridLength(1, GridUnitType.Auto)
+                        });
+                        gradesGrid.Children.Add(new StackLayout()
+                        {
+                            Orientation = StackOrientation.Vertical,
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            VerticalOptions = LayoutOptions.Start,
+                            HeightRequest = 1,
+                            BackgroundColor = Color.FromHex("#111111")
+                        }, 0, 4, 1, 2
+                        );
+
+                        int row = 1;
                         float points = 0;
                         foreach (Grades grade in previousSemesterCourse.Grades)
                         {
@@ -270,6 +276,21 @@ namespace IBU_Mobile
                                 3, row
                             );
 
+                            gradesGrid.RowDefinitions.Add(new RowDefinition()
+                            {
+                                Height = new GridLength(1, GridUnitType.Auto)
+                            });
+                            row++;
+                            gradesGrid.Children.Add(new StackLayout()
+                            {
+                                Orientation = StackOrientation.Vertical,
+                                HorizontalOptions = LayoutOptions.FillAndExpand,
+                                VerticalOptions = LayoutOptions.Start,
+                                HeightRequest = 1,
+                                BackgroundColor = Color.FromHex("#777777")
+                            }, 0, 4, row, row + 1
+                            );
+
                         }
 
                         gradesGrid.RowDefinitions.Add(new RowDefinition()
@@ -303,6 +324,21 @@ namespace IBU_Mobile
 
                         if (previousSemesterCourse?.FinalGrade != 0)
                         {
+                            gradesGrid.RowDefinitions.Add(new RowDefinition()
+                            {
+                                Height = new GridLength(1, GridUnitType.Auto)
+                            });
+                            row++;
+                            gradesGrid.Children.Add(new StackLayout()
+                            {
+                                Orientation = StackOrientation.Vertical,
+                                HorizontalOptions = LayoutOptions.FillAndExpand,
+                                VerticalOptions = LayoutOptions.Start,
+                                HeightRequest = 1,
+                                BackgroundColor = Color.FromHex("#222222")
+                            }, 0, 4, row, row + 1
+                            );
+
                             gradesGrid.RowDefinitions.Add(new RowDefinition()
                             {
                                 Height = new GridLength(1, GridUnitType.Auto)
