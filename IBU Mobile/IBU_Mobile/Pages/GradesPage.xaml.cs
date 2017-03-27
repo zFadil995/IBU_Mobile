@@ -78,9 +78,9 @@ namespace IBU_Mobile
                         {
                             new Image()
                             {
-                                Source = "placeholder.png",
-                                HeightRequest = 15,
-                                Margin = new Thickness(3),
+                                Source = "academic.png",
+                                HeightRequest = 20,
+                                Margin = new Thickness(1),
                                 VerticalOptions = LayoutOptions.FillAndExpand,
                                 HorizontalOptions = LayoutOptions.Start
                             },
@@ -191,7 +191,7 @@ namespace IBU_Mobile
                         gradesGrid.Children.Add(
                             new Label()
                             {
-                                Text = "Percent",
+                                Text = "Percent  ",
                                 FontAttributes = FontAttributes.Bold,
                                 TextColor = Color.FromHex("#555555"),
                                 FontSize = 12
@@ -426,7 +426,7 @@ namespace IBU_Mobile
                             {
                                 new Image()
                                 {
-                                    Source = "placeholder.png",
+                                    Source = "subject.png",
                                     HeightRequest = 13,
                                     Margin = new Thickness(2),
                                     VerticalOptions = LayoutOptions.FillAndExpand,

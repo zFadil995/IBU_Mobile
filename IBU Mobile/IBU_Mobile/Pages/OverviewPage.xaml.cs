@@ -39,7 +39,7 @@ namespace IBU_Mobile
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         Children =
                         {
-                            new Image() {Source = "menuicon.png", HeightRequest = 15,},
+                            new Image() {Source = "subject.png", HeightRequest = 15,},
                             new Label()
                             {
                                 VerticalOptions = LayoutOptions.FillAndExpand,
