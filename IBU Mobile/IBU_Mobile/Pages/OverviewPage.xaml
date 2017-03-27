@@ -9,7 +9,7 @@
             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
                 <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
-                        <Image Source="placeholder.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="15" Margin="3"/>
+                        <Image Source="student.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
                         <Label Text="Student Info" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
@@ -26,16 +26,16 @@
                             <RowDefinition Height="25"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.Children>
-                            <Image Source="menuicon.png" HeightRequest="15" Grid.Row="0" Grid.Column="0" Margin="2"></Image>
+                            <Image Source="studentid.png" HeightRequest="15" Grid.Row="0" Grid.Column="0" Margin="2"></Image>
                             <Label Text="Student ID" TextColor="#222222" FontSize="14" VerticalTextAlignment="End" FontAttributes="Bold" Margin="2" Grid.Row="0" Grid.Column="1"></Label>
                             <Label x:Name="StudentID" Text="..." TextColor="Black" FontSize="13" VerticalTextAlignment="End" Margin="7, 2, 2, 2" Grid.Row="0" Grid.Column="2"></Label>
-                            <Image Source="menuicon.png" HeightRequest="15" Grid.Row="1" Grid.Column="0" Margin="2"></Image>
+                            <Image Source="email.png" HeightRequest="15" Grid.Row="1" Grid.Column="0" Margin="2"></Image>
                             <Label Text="Email" TextColor="#222222" FontSize="14" VerticalTextAlignment="End" FontAttributes="Bold" Margin="2" Grid.Row="1" Grid.Column="1"></Label>
                             <Label x:Name="Email" Text="..." TextColor="Black" FontSize="13" VerticalTextAlignment="End" Margin="7, 2, 2, 2" Grid.Row="1" Grid.Column="2"></Label>
-                            <Image Source="menuicon.png" HeightRequest="15" Grid.Row="2" Grid.Column="0" Margin="2"></Image>
+                            <Image Source="attendance.png" HeightRequest="15" Grid.Row="2" Grid.Column="0" Margin="2"></Image>
                             <Label Text="Attendance" TextColor="#222222" FontSize="14" VerticalTextAlignment="End" FontAttributes="Bold" Margin="2" Grid.Row="2" Grid.Column="1"></Label>
                             <Label x:Name="Attendance" Text="..." TextColor="Black" FontSize="13" VerticalTextAlignment="End" Margin="7, 2, 2, 2" Grid.Row="2" Grid.Column="2"></Label>
-                            <Image Source="menuicon.png" HeightRequest="15" Grid.Row="3" Grid.Column="0" Margin="2"></Image>
+                            <Image Source="nationality.png" HeightRequest="15" Grid.Row="3" Grid.Column="0" Margin="2"></Image>
                             <Label Text="Nationality" TextColor="#222222" FontSize="14" VerticalTextAlignment="End" FontAttributes="Bold" Margin="2" Grid.Row="3" Grid.Column="1"></Label>
                             <Label x:Name="Nationality" Text="..." TextColor="Black" FontSize="13" VerticalTextAlignment="End" Margin="7, 2, 2, 2" Grid.Row="3" Grid.Column="2"></Label>
                         </Grid.Children>
@@ -43,7 +43,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
-                        <Image Source="placeholder.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="15" Margin="3"/>
+                        <Image Source="academic.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
                         <Label Text="Courses" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
@@ -51,7 +51,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
-                        <Image Source="placeholder.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="15" Margin="3"/>
+                        <Image Source="financials.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
                         <Label Text="Financial Report" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>

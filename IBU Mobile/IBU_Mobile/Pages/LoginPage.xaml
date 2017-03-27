@@ -7,13 +7,21 @@
         <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="0">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" />
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="5" BackgroundColor="#D0A650" />
-            <Image Source="logo.png" HorizontalOptions="Center" VerticalOptions="End"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="End" Padding="5, 0, 5, 0" BackgroundColor="#D0A650">
+                <Image Source="logo.png" HorizontalOptions="Center" VerticalOptions="End"/>
+            </StackLayout>
             <StackLayout HorizontalOptions="Fill" VerticalOptions="StartAndExpand" BackgroundColor="White" Spacing="0">
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="5" BackgroundColor="#D0A650" />
-                <Entry x:Name="StudentID" Placeholder="Student ID" PlaceholderColor="#777777" IsPassword="False" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
-                <Entry x:Name="Password" Placeholder="**********" PlaceholderColor="#777777" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
-                <Button Text="SIGN IN" TextColor="White" BackgroundColor="#0052A5" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 25" Clicked="SignIn" />
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="5" BackgroundColor="#D0A650" />
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                    <StackLayout HorizontalOptions="End" VerticalOptions="FillAndExpand" WidthRequest="5" BackgroundColor="#D0A650" />
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="2" BackgroundColor="#D0A650" />
+                        <Entry x:Name="StudentID" Placeholder="Student ID" PlaceholderColor="#777777" IsPassword="False" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
+                        <Entry x:Name="Password" Placeholder="**********" PlaceholderColor="#777777" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
+                        <Button Text="SIGN IN" TextColor="White" BackgroundColor="#0052A5" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 25" Clicked="SignIn" />
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="5" BackgroundColor="#D0A650" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="5" BackgroundColor="#D0A650" />
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </StackLayout>

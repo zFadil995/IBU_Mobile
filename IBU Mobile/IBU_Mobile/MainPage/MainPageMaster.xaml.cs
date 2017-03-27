@@ -22,12 +22,12 @@ namespace IBU_Mobile
             IBUData.MainPage = this;
             IBUMainMenu.ItemsSource= new ObservableCollection<IBUMenuItem>(new[]
             {
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Overview", TargetType = typeof(OverviewPage)},
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Grades", TargetType = typeof(GradesPage)},
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Attendance", TargetType = typeof(AttendancePage)},
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Messages", TargetType = typeof(MessagesPage)},
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "LMS", TargetType = typeof(LMSPage)},
-                    new IBUMenuItem { IconPath = "menuicon.png", PageTitle = "Document Request", TargetType = typeof(DocumentRequestPage)},
+                    new IBUMenuItem { IconPath = "overview.png", PageTitle = "Overview", TargetType = typeof(OverviewPage)},
+                    new IBUMenuItem { IconPath = "grades.png", PageTitle = "Grades", TargetType = typeof(GradesPage)},
+                    new IBUMenuItem { IconPath = "attendance.png", PageTitle = "Attendance", TargetType = typeof(AttendancePage)},
+                    new IBUMenuItem { IconPath = "messages.png", PageTitle = "Messages", TargetType = typeof(MessagesPage)},
+                    new IBUMenuItem { IconPath = "lms.png", PageTitle = "LMS", TargetType = typeof(LMSPage)},
+                    new IBUMenuItem { IconPath = "document.png", PageTitle = "Document Request", TargetType = typeof(DocumentRequestPage)},
                 });
             
             SetUp();

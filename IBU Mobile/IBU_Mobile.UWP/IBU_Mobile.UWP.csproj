@@ -108,18 +108,25 @@
     <None Include="IBU_Mobile.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="academic.png" />
+    <Content Include="attendance.png" />
     <Content Include="banner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
+    <Content Include="document.png" />
     <Content Include="down.png" />
+    <Content Include="email.png" />
     <Content Include="face.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="failure.png" />
+    <Content Include="financials.png" />
+    <Content Include="grades.png" />
     <Content Include="icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="lms.png" />
     <Content Include="loading.png" />
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -130,6 +137,8 @@
     <Content Include="messages.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="nationality.png" />
+    <Content Include="overview.png" />
     <Content Include="placeholder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -168,6 +177,9 @@
     <Content Include="splash_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="student.png" />
+    <Content Include="studentid.png" />
+    <Content Include="subject.png" />
     <Content Include="success.png" />
     <Content Include="up.png" />
   </ItemGroup>
