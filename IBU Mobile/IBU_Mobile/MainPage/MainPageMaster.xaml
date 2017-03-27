@@ -58,8 +58,8 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="LogOutTapped"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
-                    <Image Source="placeholder.png" HeightRequest="20" HorizontalOptions="EndAndExpand"></Image>
-                    <Label TextColor="White" Text="LOG OUT" HorizontalOptions="StartAndExpand" FontAttributes="None" FontSize="17"></Label>
+                    <Image Source="logout.png" HeightRequest="20" HorizontalOptions="EndAndExpand"></Image>
+                    <Label TextColor="#D0A650" Text="LOG OUT" HorizontalOptions="StartAndExpand" FontAttributes="None" FontSize="17"></Label>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
