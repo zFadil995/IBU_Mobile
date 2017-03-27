@@ -135,6 +135,8 @@ namespace IBU_Mobile
                     BackgroundColor = Color.White
                 };
 
+                SemesterLayout.Children.Add(coursesLayout);
+
                 foreach (Courses previousSemesterCourse in previousSemester.Courses)
                 {
                     Grid gradesGrid = new Grid()
@@ -467,8 +469,6 @@ namespace IBU_Mobile
                     }
                     });
                 }
-
-                SemesterLayout.Children.Add(coursesLayout);
             }
             else
             {

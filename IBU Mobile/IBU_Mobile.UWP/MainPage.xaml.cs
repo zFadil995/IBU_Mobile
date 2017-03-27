@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,8 +21,15 @@ namespace IBU_Mobile.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            ImageCircle.Forms.Plugin.UWP.ImageCircleRenderer.Init();
             LoadApplication(new IBU_Mobile.App());
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                Windows.UI.ViewManagement.StatusBar.GetForCurrentView().BackgroundColor = Colors.Black;
+                Windows.UI.ViewManagement.StatusBar.GetForCurrentView().BackgroundOpacity = 1;
+                Windows.UI.ViewManagement.StatusBar.GetForCurrentView().ForegroundColor = Color.FromArgb(1, 176, 190, 197);
+            }
         }
     }
 }

@@ -42,7 +42,12 @@ namespace IBU_Mobile
         {
             if (IBUData.UserData != null)
             {
-                StudentImage.Source = IBUData.UserData.ImagePath;
+                StudentImage.Source = new UriImageSource
+                {
+                    Uri = new Uri(IBUData.UserData.ImagePath),
+                    CachingEnabled = true,
+                    CacheValidity = new TimeSpan(180, 0, 0, 0)
+                }; //IBUData.UserData.ImagePath;
                 StudentName.Text = IBUData.UserData.FirstName + " " + IBUData.UserData.LastName;
                 StudentID.Text = IBUData.UserData.StudentID;
             }
