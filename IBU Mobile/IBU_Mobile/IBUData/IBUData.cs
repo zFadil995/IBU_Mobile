@@ -17,20 +17,22 @@ namespace IBU_Mobile
         public static UserData UserData = new UserData();
         public static OverviewData OverviewData = new OverviewData();
         public static GradesData GradesData = new GradesData();
+        public static MessagesData MessagesData = new MessagesData();
         public static DocumentsData DocumentsData = new DocumentsData();
 
-        public static ToolbarItem OverviewToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateOverview);
-        public static ToolbarItem GradesToolbar = new ToolbarItem("Loading Data", "loading.png", UpdateGrades);
-        public static ToolbarItem AttendanceToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
-        public static ToolbarItem MessagesToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
-        public static ToolbarItem LMSToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
-        public static ToolbarItem DocumentsToolbar = new ToolbarItem("Loading Data", "loading.png", () => { });
+        public static ToolbarItem OverviewToolbar = new ToolbarItem("Old Data", "failure.png", UpdateOverview);
+        public static ToolbarItem GradesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateGrades);
+        public static ToolbarItem AttendanceToolbar = new ToolbarItem("Old Data", "failure.png", () => { });
+        public static ToolbarItem MessagesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateMessages);
+        public static ToolbarItem LMSToolbar = new ToolbarItem("Old Data", "failure.png", () => { });
+        public static ToolbarItem DocumentsToolbar = new ToolbarItem("Old Data", "failure.png", UpdateDocuments);
 
         public static void SetUpData()
         {
             SetUpUser();
             SetUpOverview();
             SetUpGrades();
+            SetUpMessages();
             SetUpDocuments();
         }
 
@@ -39,6 +41,7 @@ namespace IBU_Mobile
             UpdateUser();
             UpdateOverview();
             UpdateGrades();
+            UpdateMessages();
             UpdateDocuments();
         }
 
@@ -84,10 +87,12 @@ namespace IBU_Mobile
         {
             OverviewData = JsonConvert.DeserializeObject<OverviewData>(Settings.OverviewData);
         }
-        private static async void UpdateOverview()
+        public static async void UpdateOverview()
         {
             try
             {
+                OverviewToolbar.Icon = "loading.png";
+                OverviewToolbar.Text = "Loading Data";
                 var client = new RestClient("http://54.244.213.136/overview.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -144,10 +149,12 @@ namespace IBU_Mobile
                         .ToArray();
             }
         }
-        private static async void UpdateGrades()
+        public static async void UpdateGrades()
         {
             try
             {
+                GradesToolbar.Icon = "loading.png";
+                GradesToolbar.Text = "Loading Data";
                 var client = new RestClient("http://54.244.213.136/grades.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -182,15 +189,71 @@ namespace IBU_Mobile
             }
         }
 
-        public static void SetUpDocuments()
+        public static void SetUpMessages()
         {
-            DocumentsData = JsonConvert.DeserializeObject<DocumentsData>(Settings.DocumentsData);
+            MessagesData = JsonConvert.DeserializeObject<MessagesData>(Settings.MessagesData);
+            if (MessagesData != null)
+            {
+                MessagesData.Messages = MessagesData.Messages.OrderBy(message => message.date).Reverse().ToArray();
+            }
         }
 
-        private static async void UpdateDocuments()
+        public static async void UpdateMessages()
         {
             try
             {
+                MessagesToolbar.Icon = "loading.png";
+                MessagesToolbar.Text = "Loading Data";
+                var client = new RestClient("http://54.244.213.136/messages.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (MessagesData?.LastModified != null)
+                    request.AddParameter("LastModified", MessagesData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                MessagesData tempMessagesData = JsonConvert.DeserializeObject<MessagesData>(data);
+                if (tempMessagesData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                else if (MessagesData?.LastModified == null || Double.Parse(tempMessagesData.LastModified) > Double.Parse(MessagesData.LastModified))
+                {
+                    Settings.MessagesData = data;
+                    SetUpMessages();
+                    if (CurrentPage.GetType() == typeof(MessagesPage))
+                    {
+                        ((MessagesPage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+                MessagesToolbar.Icon = "success.png";
+                MessagesToolbar.Text = "Successfully Loaded";
+            }
+            catch (Exception e)
+            {
+                MessagesToolbar.Icon = "failure.png";
+                MessagesToolbar.Text = "Loading Failed";
+                string exception = e.Message;
+            }
+        }
+
+        public static void SetUpDocuments()
+        {
+            DocumentsData = JsonConvert.DeserializeObject<DocumentsData>(Settings.DocumentsData);
+
+            if (DocumentsData != null)
+            {
+                DocumentsData.Documents = DocumentsData.Documents.OrderBy(document => document.date).Reverse().ToArray();
+            }
+        }
+
+        public static async void UpdateDocuments()
+        {
+            try
+            {
+                DocumentsToolbar.Icon = "loading.png";
+                DocumentsToolbar.Text = "Loading Data";
                 var client = new RestClient("http://54.244.213.136/documents.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -292,8 +355,24 @@ namespace IBU_Mobile
         public int Turkish { get; set; }
         public int English { get; set; }
         public int Bosnian { get; set; }
-        public int Number { get; set; }
-        public string Date { get; set; }
+        public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
         public int Status { get; set; }
+        public DateTime date;
+    }
+
+    public class MessagesData
+    {
+        public string LastModified { get; set; }
+        public Messages[] Messages { get; set; }
+    }
+
+    public class Messages
+    {
+        public int MessageID { get; set; }
+        public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
+        public string Title { get; set; }
+        public string Contents { get; set; }
+        public int Status { get; set; }
+        public DateTime date;
     }
 }

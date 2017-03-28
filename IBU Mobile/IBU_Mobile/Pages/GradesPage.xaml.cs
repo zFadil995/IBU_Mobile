@@ -55,8 +55,8 @@ namespace IBU_Mobile
                 HorizontalOptions = LayoutOptions.EndAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Source = "down.png",
-                HeightRequest = 20,
-                Margin = new Thickness(1)
+                HeightRequest = 35,
+                Margin = new Thickness(1, 1, 4, 1)
             };
             StackLayout lineLayout =
                 new StackLayout()
@@ -72,9 +72,16 @@ namespace IBU_Mobile
                 Orientation = StackOrientation.Horizontal,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Start,
-                Padding = 10,
                 BackgroundColor = Color.FromHex("#D0A650"),
                 Children =
+                {
+                    new StackLayout()
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
+                        Padding = 10,
+                        Children =
                         {
                             new Image()
                             {
@@ -97,6 +104,9 @@ namespace IBU_Mobile
                                 HorizontalOptions = LayoutOptions.StartAndExpand
                             }
                         }
+                    },
+
+                }
             };
             StackLayout SemesterLayout = new StackLayout()
             {
@@ -105,8 +115,11 @@ namespace IBU_Mobile
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Start
             };
-           
-            expandSemester.GestureRecognizers.Add(new TapGestureRecognizer() { Command = new Command(() => { SetSemester(SemesterLayout, semester, expandSemester); }) });
+
+            expandSemester.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() => { SetSemester(SemesterLayout, semester, expandSemester); })
+            });
 
             labelLayout.Children.Add(expandSemester);
             SemesterLayout.Children.Add(labelLayout);
@@ -119,6 +132,7 @@ namespace IBU_Mobile
 
             GradesLayout.Children.Add(SemesterLayout);
         }
+
         private void SetSemester(StackLayout SemesterLayout, Semesters previousSemester, Image expandSemester)
         {
 
