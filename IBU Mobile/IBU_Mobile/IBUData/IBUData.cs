@@ -42,7 +42,7 @@ namespace IBU_Mobile
             UpdateDocuments();
         }
 
-        public static async void SetUpUser()
+        public static void SetUpUser()
         {
             UserData = JsonConvert.DeserializeObject<UserData>(Settings.UserData);
         }
@@ -80,7 +80,7 @@ namespace IBU_Mobile
         }
 
 
-        public static async void SetUpOverview()
+        public static void SetUpOverview()
         {
             OverviewData = JsonConvert.DeserializeObject<OverviewData>(Settings.OverviewData);
         }
@@ -123,7 +123,7 @@ namespace IBU_Mobile
                 //Oh Well... Maybe no internet?
             }
         }
-        public static async void SetUpGrades()
+        public static void SetUpGrades()
         {
             GradesData = JsonConvert.DeserializeObject<GradesData>(Settings.GradesData);
             if (GradesData != null)
@@ -182,7 +182,7 @@ namespace IBU_Mobile
             }
         }
 
-        public static async void SetUpDocuments()
+        public static void SetUpDocuments()
         {
             DocumentsData = JsonConvert.DeserializeObject<DocumentsData>(Settings.DocumentsData);
         }
