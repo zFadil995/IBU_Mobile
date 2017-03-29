@@ -6,7 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using IBU_Mobile.Helpers;
+using Newtonsoft.Json;
+using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -154,15 +157,15 @@ namespace IBU_Mobile.Pages
             }
         }
 
-        public void SetMessage(StackLayout MessageLayout, Messages message, Label TitleLabel, Image expandMessage)
+        public void SetMessage(StackLayout messageLayout, Messages message, Label titleLabel, Image expandMessage)
         {
 
-            if (MessageLayout.Children.Count == 2)
+            if (messageLayout.Children.Count == 2)
             {
                 expandMessage.Source = "up.png";
-                if (TitleLabel.FontAttributes == FontAttributes.Bold)
-                    TitleLabel.FontAttributes = FontAttributes.None;
-                MessageLayout.Children.Add(new StackLayout()
+                if(message.Status == 0)
+                    SetRead(titleLabel, message);
+                messageLayout.Children.Add(new StackLayout()
                 {
                     Orientation = StackOrientation.Vertical,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -187,13 +190,44 @@ namespace IBU_Mobile.Pages
             else
             {
                 expandMessage.Source = "down.png";
-                MessageLayout.Children.RemoveAt(2);
+                messageLayout.Children.RemoveAt(2);
+            }
+        }
+
+        private async void SetRead(Label TitleLabel, Messages message)
+        {
+            try
+            {
+                var client = new RestClient("http://54.244.213.136/markread.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                request.AddParameter("MessageID", message.MessageID, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                ResultData results = JsonConvert.DeserializeObject<ResultData>(data);
+                if (results.Result == 1)
+                {
+                    if (TitleLabel.FontAttributes == FontAttributes.Bold)
+                        TitleLabel.FontAttributes = FontAttributes.None;
+                    message.Status = 1;
+                    ((MainPageMaster) IBUData.MainPage)?.SetMessagesAction();
+                }
+            }
+            catch (Exception e)
+            {
+                string exception = e.Message;
             }
         }
 
         public Action SetUpAction
         {
             get { return new Action(SetUp); }
+        }
+
+        private class ResultData
+        {
+            public int Result { get; set; }
         }
     }
 

@@ -196,6 +196,7 @@ namespace IBU_Mobile
             {
                 MessagesData.Messages = MessagesData.Messages.OrderBy(message => message.date).Reverse().ToArray();
             }
+            ((MainPageMaster) MainPage)?.SetMessagesAction();
         }
 
         public static async void UpdateMessages()

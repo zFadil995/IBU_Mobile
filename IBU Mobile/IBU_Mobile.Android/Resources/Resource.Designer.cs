@@ -2222,88 +2222,91 @@ namespace IBU_Mobile.Droid
 			public const int messages = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int messageswhite = 2130837672;
+			public const int messagesnew = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int mr_dialog_material_background_dark = 2130837673;
+			public const int messageswhite = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int mr_dialog_material_background_light = 2130837674;
+			public const int mr_dialog_material_background_dark = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int mr_ic_audiotrack_light = 2130837675;
+			public const int mr_dialog_material_background_light = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int mr_ic_cast_dark = 2130837676;
+			public const int mr_ic_audiotrack_light = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int mr_ic_cast_light = 2130837677;
+			public const int mr_ic_cast_dark = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int mr_ic_close_dark = 2130837678;
+			public const int mr_ic_cast_light = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int mr_ic_close_light = 2130837679;
+			public const int mr_ic_close_dark = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837680;
+			public const int mr_ic_close_light = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int mr_ic_media_route_connecting_mono_light = 2130837681;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int mr_ic_media_route_mono_dark = 2130837682;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int mr_ic_media_route_mono_light = 2130837683;
+			public const int mr_ic_media_route_mono_dark = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int mr_ic_pause_dark = 2130837684;
+			public const int mr_ic_media_route_mono_light = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int mr_ic_pause_light = 2130837685;
+			public const int mr_ic_pause_dark = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int mr_ic_play_dark = 2130837686;
+			public const int mr_ic_pause_light = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int mr_ic_play_light = 2130837687;
+			public const int mr_ic_play_dark = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int nationality = 2130837688;
+			public const int mr_ic_play_light = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int notdone = 2130837689;
-			
-			// aapt resource value: 0x7f0200c3
-			public const int notification_template_icon_bg = 2130837699;
+			public const int nationality = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int overview = 2130837690;
+			public const int notdone = 2130837690;
+			
+			// aapt resource value: 0x7f0200c4
+			public const int notification_template_icon_bg = 2130837700;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int splash_icon = 2130837691;
+			public const int overview = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int splash_screen = 2130837692;
+			public const int splash_icon = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int student = 2130837693;
+			public const int splash_screen = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int studentid = 2130837694;
+			public const int student = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int subject = 2130837695;
+			public const int studentid = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int success = 2130837696;
+			public const int subject = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int tr = 2130837697;
+			public const int success = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int up = 2130837698;
+			public const int tr = 2130837698;
+			
+			// aapt resource value: 0x7f0200c3
+			public const int up = 2130837699;
 			
 			static Drawable()
 			{

@@ -358,11 +358,11 @@ namespace IBU_Mobile.Pages
             ExplanationEntry.IsEnabled = false;
             if (tr == 0 && en == 0 && ba == 0)
             {
-                await DisplayAlert("No language selected", "Please select a language for your document", "OK");
+                await DisplayAlert("Warning", "Please select a language for your document", "OK");
             }
             else if (description == String.Empty || description == null)
             {
-                await DisplayAlert("No description included", "Please include a description for your document", "OK");
+                await DisplayAlert("Warning", "Please include a description for your document", "OK");
             }
             else
             {
@@ -388,13 +388,13 @@ namespace IBU_Mobile.Pages
                     }
                     else
                     {
-                        await DisplayAlert("Error", "An error occured while requesting your document", "OK");
+                        await DisplayAlert("Warning", "An error occured while requesting your document", "OK");
                     }
                 }
                 catch (Exception e)
                 {
                     string exception = e.Message;
-                    await DisplayAlert("Error", "An error occured while requesting your document", "OK");
+                    await DisplayAlert("Warning", "An error occured while requesting your document", "OK");
                 }
             }
             DocumentTypeButton.IsEnabled = true;

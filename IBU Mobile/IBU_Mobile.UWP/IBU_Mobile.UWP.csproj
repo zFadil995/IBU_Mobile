@@ -141,6 +141,7 @@
     <Content Include="messages.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="messagesnew.png" />
     <Content Include="messageswhite.png" />
     <Content Include="nationality.png" />
     <Content Include="notdone.png" />
