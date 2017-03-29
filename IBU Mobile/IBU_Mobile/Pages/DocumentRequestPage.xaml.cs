@@ -182,9 +182,6 @@ namespace IBU_Mobile.Pages
                         {
                             Text = " Date ",
                             FontAttributes = FontAttributes.Bold,
-                            HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.Center,
                             TextColor = Color.FromHex("#555555"),
                             FontSize = 12
                         },
@@ -385,6 +382,8 @@ namespace IBU_Mobile.Pages
                     {
                         await DisplayAlert("Success", "You have succesfully requested a document", "OK");
                         IBUData.UpdateDocuments();
+                        if (PreviousRequestsLayout.Children.Count == 2)
+                            expandPreviousRequests();
                     }
                     else
                     {
