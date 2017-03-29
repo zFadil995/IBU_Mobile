@@ -12,6 +12,7 @@ namespace IBU_Mobile
 {
     public static class IBUData
     {
+
         public static Page CurrentPage;
         public static Page MainPage;
         public static UserData UserData = new UserData();

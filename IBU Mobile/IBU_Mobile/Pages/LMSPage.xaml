@@ -8,7 +8,7 @@
             <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                 <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
                     <Image Source="lmswhite.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
-                    <Label Text="LMS Deadlines" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                    <Label x:Name="doodle" Text="LMS Deadlines" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White" Padding="5, 10, 5, 10">
