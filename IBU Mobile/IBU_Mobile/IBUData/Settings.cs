@@ -48,5 +48,23 @@ namespace IBU_Mobile.Helpers
             set { AppSettings.AddOrUpdateValue<string>(_gradesData, value); }
         }
 
+        private const string _documentsData = "DocumentsData";
+        private static readonly string _documentsDataDefault = String.Empty;
+
+        public static string DocumentsData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_documentsData, _documentsDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_documentsData, value); }
+        }
+
+        private const string _messagesData = "MessagesData";
+        private static readonly string _messagesDataDefault = String.Empty;
+
+        public static string MessagesData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_messagesData, _messagesDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_messagesData, value); }
+        }
+
     }
 }

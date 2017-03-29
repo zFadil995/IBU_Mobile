@@ -4,8 +4,7 @@
              x:Class="IBU_Mobile.Pages.MessagesPage"
              Title="Messages">
     <ScrollView  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="#0052A5">
-        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-            <Label Text="MESSAGES" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+        <StackLayout x:Name="MessagesLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
         </StackLayout>
     </ScrollView>
 </ContentPage>

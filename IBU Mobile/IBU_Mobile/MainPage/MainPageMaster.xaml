@@ -14,14 +14,18 @@
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.4, Constant=0}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.15, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.1, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.1, Constant=0}"/>
             <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Spacing="0"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.7, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.65, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.1125, Constant=0}">
+                    ElementName=BannerImage, Property=Height, Factor=0.1125, Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
+                    ElementName=BannerImage, Property=Height, Factor=0.3, Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
+                    ElementName=BannerImage, Property=Width, Factor=0.75, Constant=0}">
                 <Label x:Name="StudentName" Text="..." FontAttributes="Bold" TextColor="#EEEEEE" VerticalOptions="EndAndExpand" FontSize="20"></Label>
                 <Label x:Name="StudentID" Text="..." TextColor="#DDDDDD" FontSize="15" VerticalOptions="StartAndExpand"></Label>
             </StackLayout>
@@ -54,7 +58,7 @@
         </StackLayout>
         <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" Margin="5, 5, 5, 15" Spacing="25">
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="Center" BackgroundColor="#D0A650" Padding="1">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#1A6CBF" Padding="10, 5, 10, 5">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#0052A5" Padding="10, 5, 10, 5">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="LogOutTapped"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>

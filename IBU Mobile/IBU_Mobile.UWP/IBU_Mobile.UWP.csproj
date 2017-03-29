@@ -110,13 +110,18 @@
   <ItemGroup>
     <Content Include="academic.png" />
     <Content Include="attendance.png" />
+    <Content Include="attendancewhite.png" />
+    <Content Include="ba.png" />
     <Content Include="banner.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
     <Content Include="document.png" />
+    <Content Include="documentwhite.png" />
+    <Content Include="done.png" />
     <Content Include="down.png" />
     <Content Include="email.png" />
+    <Content Include="en.png" />
     <Content Include="face.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -127,6 +132,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="lms.png" />
+    <Content Include="lmswhite.png" />
     <Content Include="loading.png" />
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -135,7 +141,10 @@
     <Content Include="messages.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="messagesnew.png" />
+    <Content Include="messageswhite.png" />
     <Content Include="nationality.png" />
+    <Content Include="notdone.png" />
     <Content Include="overview.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
@@ -176,6 +185,7 @@
     <Content Include="studentid.png" />
     <Content Include="subject.png" />
     <Content Include="success.png" />
+    <Content Include="tr.png" />
     <Content Include="up.png" />
   </ItemGroup>
   <ItemGroup>

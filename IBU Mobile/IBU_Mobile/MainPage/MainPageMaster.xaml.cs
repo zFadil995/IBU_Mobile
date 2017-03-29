@@ -47,11 +47,28 @@ namespace IBU_Mobile
                     Uri = new Uri(IBUData.UserData.ImagePath),
                     CachingEnabled = true,
                     CacheValidity = new TimeSpan(180, 0, 0, 0)
-                }; //IBUData.UserData.ImagePath;
+                };
                 StudentName.Text = IBUData.UserData.FirstName + " " + IBUData.UserData.LastName;
                 StudentID.Text = IBUData.UserData.StudentID;
+                SetMessages();
             }
 
+        }
+        private void SetMessages()
+        {
+            MessagesIcon.Source = "messages.png";
+            if (IBUData.MessagesData != null)
+            {
+                foreach (Messages message in IBUData.MessagesData.Messages)
+                {
+                    if (message.Status == 0)
+                    {
+                        MessagesIcon.Source = "messagesnew.png";
+                        return;
+                    }
+
+                }
+            }
         }
 
         public Action SetUpAction
@@ -59,6 +76,14 @@ namespace IBU_Mobile
             get
             {
                 return new Action(SetUp);
+            }
+        }
+
+        public Action SetMessagesAction
+        {
+            get
+            {
+                return new Action(SetMessages);
             }
         }
 

@@ -4,8 +4,35 @@
              x:Class="IBU_Mobile.Pages.DocumentRequestPage"
              Title="Document Request">
     <ScrollView  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="#0052A5">
-        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
-            <Label Text="DOCUMENT REQUEST" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+            <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
+                    <Image Source="documentwhite.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
+                    <Label Text="Request a Document" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White" Padding="10, 10, 10, 10">
+                    <Button x:Name="DocumentTypeButton" Text="STUDENT DOCUMENT" TextColor="Black" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="DocumentTypeClicked"></Button>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Button x:Name="TRButton" Text="TR" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="TRClicked"></Button>
+                        <Button x:Name="ENButton" Text="EN" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="ENClicked"></Button>
+                        <Button x:Name="BAButton" Text="BA" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="BAClicked"></Button>
+                    </StackLayout>
+                    <Entry x:Name="ExplanationEntry" Placeholder="Explanation" PlaceholderColor="#777777" IsPassword="False" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0"></Entry>
+                    <Button Text="REQUEST A DOCUMENT" TextColor="Black" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="DocumentRequestClicked"></Button>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="PreviousRequestsLayout" Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Spacing="5">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand" Padding="10" Spacing="5">
+                        <Image Source="documentwhite.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>
+                        <Label Text="Previous Requests" TextColor="White" FontSize="15" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <Image x:Name="expandPreviousImage" Source="down.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="35" Margin="1, 1, 4, 1"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"/>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

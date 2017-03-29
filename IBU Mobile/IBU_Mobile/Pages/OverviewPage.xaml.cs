@@ -16,7 +16,6 @@ namespace IBU_Mobile
             SetUp();
 
             ToolbarItems.Add(IBUData.OverviewToolbar);
-
         }
 
         protected override void OnAppearing()
