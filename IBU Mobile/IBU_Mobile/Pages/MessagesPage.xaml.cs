@@ -55,7 +55,7 @@ namespace IBU_Mobile.Pages
                                 Orientation = StackOrientation.Horizontal,
                                 HorizontalOptions = LayoutOptions.FillAndExpand,
                                 VerticalOptions = LayoutOptions.Start,
-                                BackgroundColor = Color.FromHex("#D9EDF7"),
+                                BackgroundColor = Color.White,
                                 Padding = new Thickness(10, 5, 10, 5),
                                 Children =
                                 {

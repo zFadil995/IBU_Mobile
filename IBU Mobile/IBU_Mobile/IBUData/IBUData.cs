@@ -15,17 +15,19 @@ namespace IBU_Mobile
 
         public static Page CurrentPage;
         public static Page MainPage;
+
         public static UserData UserData = new UserData();
         public static OverviewData OverviewData = new OverviewData();
         public static GradesData GradesData = new GradesData();
         public static MessagesData MessagesData = new MessagesData();
+        public static LMSData LMSData = new LMSData();
         public static DocumentsData DocumentsData = new DocumentsData();
 
         public static ToolbarItem OverviewToolbar = new ToolbarItem("Old Data", "failure.png", UpdateOverview);
         public static ToolbarItem GradesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateGrades);
         public static ToolbarItem AttendanceToolbar = new ToolbarItem("Old Data", "failure.png", () => { });
         public static ToolbarItem MessagesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateMessages);
-        public static ToolbarItem LMSToolbar = new ToolbarItem("Old Data", "failure.png", () => { });
+        public static ToolbarItem LMSToolbar = new ToolbarItem("Old Data", "failure.png", UpdateLMS);
         public static ToolbarItem DocumentsToolbar = new ToolbarItem("Old Data", "failure.png", UpdateDocuments);
 
         public static void SetUpData()
@@ -34,6 +36,7 @@ namespace IBU_Mobile
             SetUpOverview();
             SetUpGrades();
             SetUpMessages();
+            SetUpLMS();
             SetUpDocuments();
         }
 
@@ -43,6 +46,7 @@ namespace IBU_Mobile
             UpdateOverview();
             UpdateGrades();
             UpdateMessages();
+            UpdateLMS();
             UpdateDocuments();
         }
 
@@ -197,7 +201,7 @@ namespace IBU_Mobile
             {
                 MessagesData.Messages = MessagesData.Messages.OrderBy(message => message.date).Reverse().ToArray();
             }
-            ((MainPageMaster) MainPage)?.SetMessagesAction();
+            ((MainPageMaster)MainPage)?.SetMessagesAction();
         }
 
         public static async void UpdateMessages()
@@ -236,6 +240,55 @@ namespace IBU_Mobile
             {
                 MessagesToolbar.Icon = "failure.png";
                 MessagesToolbar.Text = "Loading Failed";
+                string exception = e.Message;
+            }
+        }
+
+        public static void SetUpLMS()
+        {
+            LMSData = JsonConvert.DeserializeObject<LMSData>(Settings.LMSData);
+            if (LMSData != null)
+            {
+                LMSData.Deadlines = LMSData.Deadlines.OrderBy(deadline => deadline.deadline).ToArray();
+            }
+        }
+
+        public static async void UpdateLMS()
+        {
+            try
+            {
+                LMSToolbar.Icon = "loading.png";
+                LMSToolbar.Text = "Loading Data";
+                var client = new RestClient("http://54.244.213.136/lms.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (LMSData?.LastModified != null)
+                    request.AddParameter("LastModified", LMSData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                LMSData tempLMSData = JsonConvert.DeserializeObject<LMSData>(data);
+                if (tempLMSData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                else if (LMSData?.LastModified == null || Double.Parse(tempLMSData.LastModified) > Double.Parse(LMSData.LastModified))
+                {
+                    Settings.LMSData = data;
+                    SetUpLMS();
+                    if (CurrentPage.GetType() == typeof(LMSPage))
+                    {
+                        ((LMSPage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+                LMSToolbar.Icon = "success.png";
+                LMSToolbar.Text = "Successfully Loaded";
+            }
+            catch (Exception e)
+            {
+                LMSToolbar.Icon = "failure.png";
+                LMSToolbar.Text = "Loading Failed";
                 string exception = e.Message;
             }
         }
@@ -345,6 +398,38 @@ namespace IBU_Mobile
         public int Grade { get; set; }
     }
 
+    public class MessagesData
+    {
+        public string LastModified { get; set; }
+        public Messages[] Messages { get; set; }
+    }
+
+    public class Messages
+    {
+        public int MessageID { get; set; }
+        public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
+        public string Title { get; set; }
+        public string Contents { get; set; }
+        public int Status { get; set; }
+        public DateTime date;
+    }
+
+
+    public class LMSData
+    {
+        public string LastModified { get; set; }
+        public LMSDeadlines[] Deadlines { get; set; }
+    }
+
+    public class LMSDeadlines
+    {
+        public string Title { get; set; }
+        public string Course { get; set; }
+        public string Description { get; set; }
+        public string Deadline { get { return deadline.ToString("dd/MM/yyyy HH:MM"); } set { deadline = DateTime.Parse(value); } }
+        public DateTime deadline;
+    }
+
     public class DocumentsData
     {
         public string LastModified { get; set; }
@@ -358,22 +443,6 @@ namespace IBU_Mobile
         public int English { get; set; }
         public int Bosnian { get; set; }
         public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
-        public int Status { get; set; }
-        public DateTime date;
-    }
-
-    public class MessagesData
-    {
-        public string LastModified { get; set; }
-        public Messages[] Messages { get; set; }
-    }
-
-    public class Messages
-    {
-        public int MessageID { get; set; }
-        public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
-        public string Title { get; set; }
-        public string Contents { get; set; }
         public int Status { get; set; }
         public DateTime date;
     }

@@ -66,5 +66,25 @@ namespace IBU_Mobile.Helpers
             set { AppSettings.AddOrUpdateValue<string>(_messagesData, value); }
         }
 
+        private const string _lmsData = "LMSData";
+        private static readonly string _lmsDataDefault = String.Empty;
+
+        public static string LMSData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_lmsData, _lmsDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_lmsData, value); }
+        }
+
+        public static void ClearSettings()
+        {
+            Settings.Token = String.Empty;
+            Settings.UserData = String.Empty;
+            Settings.OverviewData = String.Empty;
+            Settings.GradesData = String.Empty;
+            Settings.MessagesData = String.Empty;
+            Settings.LMSData = String.Empty;
+            Settings.DocumentsData = String.Empty;
+        }
+
     }
 }
