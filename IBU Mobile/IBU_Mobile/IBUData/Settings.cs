@@ -57,6 +57,15 @@ namespace IBU_Mobile.Helpers
             set { AppSettings.AddOrUpdateValue<string>(_documentsData, value); }
         }
 
+        private const string _attendanceData = "AttendanceData";
+        private static readonly string _attendanceDataDefault = String.Empty;
+
+        public static string AttendanceData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_attendanceData, _attendanceDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_attendanceData, value); }
+        }
+
         private const string _messagesData = "MessagesData";
         private static readonly string _messagesDataDefault = String.Empty;
 
@@ -77,13 +86,14 @@ namespace IBU_Mobile.Helpers
 
         public static void ClearSettings()
         {
-            Settings.Token = String.Empty;
-            Settings.UserData = String.Empty;
-            Settings.OverviewData = String.Empty;
-            Settings.GradesData = String.Empty;
-            Settings.MessagesData = String.Empty;
-            Settings.LMSData = String.Empty;
-            Settings.DocumentsData = String.Empty;
+            Token = string.Empty;
+            UserData = string.Empty;
+            OverviewData = string.Empty;
+            GradesData = string.Empty;
+            AttendanceData = string.Empty;
+            MessagesData = string.Empty;
+            LMSData = string.Empty;
+            DocumentsData = string.Empty;
         }
 
     }

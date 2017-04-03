@@ -19,13 +19,14 @@ namespace IBU_Mobile
         public static UserData UserData = new UserData();
         public static OverviewData OverviewData = new OverviewData();
         public static GradesData GradesData = new GradesData();
+        public static AttendanceData AttendanceData = new AttendanceData();
         public static MessagesData MessagesData = new MessagesData();
         public static LMSData LMSData = new LMSData();
         public static DocumentsData DocumentsData = new DocumentsData();
 
         public static ToolbarItem OverviewToolbar = new ToolbarItem("Old Data", "failure.png", UpdateOverview);
         public static ToolbarItem GradesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateGrades);
-        public static ToolbarItem AttendanceToolbar = new ToolbarItem("Old Data", "failure.png", () => { });
+        public static ToolbarItem AttendanceToolbar = new ToolbarItem("Old Data", "failure.png", UpdateAttendance);
         public static ToolbarItem MessagesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateMessages);
         public static ToolbarItem LMSToolbar = new ToolbarItem("Old Data", "failure.png", UpdateLMS);
         public static ToolbarItem DocumentsToolbar = new ToolbarItem("Old Data", "failure.png", UpdateDocuments);
@@ -35,6 +36,7 @@ namespace IBU_Mobile
             SetUpUser();
             SetUpOverview();
             SetUpGrades();
+            SetUpAttendace();
             SetUpMessages();
             SetUpLMS();
             SetUpDocuments();
@@ -45,6 +47,7 @@ namespace IBU_Mobile
             UpdateUser();
             UpdateOverview();
             UpdateGrades();
+            UpdateAttendance();
             UpdateMessages();
             UpdateLMS();
             UpdateDocuments();
@@ -190,6 +193,59 @@ namespace IBU_Mobile
             {
                 GradesToolbar.Icon = "failure.png";
                 GradesToolbar.Text = "Loading Failed";
+                string exception = e.Message;
+            }
+        }
+
+        public static void SetUpAttendace()
+        {
+            AttendanceData = JsonConvert.DeserializeObject<AttendanceData>(Settings.AttendanceData);
+            if (AttendanceData != null)
+            {
+                foreach (aCourses course in AttendanceData.Courses)
+                {
+                    course.Attendance = course.Attendance.OrderBy(c => c.date).ToArray();
+                }
+                AttendanceData.Courses = AttendanceData.Courses.OrderBy(c => c.CourseCode).ToArray();
+            }
+        }
+
+        public static async void UpdateAttendance()
+        {
+            try
+            {
+                AttendanceToolbar.Icon = "loading.png";
+                AttendanceToolbar.Text = "Loading Data";
+                var client = new RestClient("http://54.244.213.136/attendance.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (AttendanceData?.LastModified != null)
+                    request.AddParameter("LastModified", AttendanceData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                AttendanceData tempAttendanceData = JsonConvert.DeserializeObject<AttendanceData>(data);
+                if (tempAttendanceData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                else if (AttendanceData?.LastModified == null || Double.Parse(tempAttendanceData.LastModified) > Double.Parse(AttendanceData.LastModified))
+                {
+                    Settings.AttendanceData = data;
+                    SetUpAttendace();
+                    if (CurrentPage.GetType() == typeof(AttendancePage))
+                    {
+                        ((AttendancePage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+                AttendanceToolbar.Icon = "success.png";
+                AttendanceToolbar.Text = "Successfully Loaded";
+            }
+            catch (Exception e)
+            {
+                AttendanceToolbar.Icon = "failure.png";
+                AttendanceToolbar.Text = "Loading Failed";
                 string exception = e.Message;
             }
         }
@@ -396,6 +452,28 @@ namespace IBU_Mobile
         public string Type { get; set; }
         public int Percent { get; set; }
         public int Grade { get; set; }
+    }
+
+    public class AttendanceData
+    {
+        public string LastModified { get; set; }
+        public aCourses[] Courses { get; set; }
+    }
+
+    public class aCourses
+    {
+        public string Name { get; set; }
+        public string CourseCode { get; set; }
+        public Attendance[] Attendance { get; set; }
+    }
+    public class Attendance
+    {
+        public string Date { get { return date.ToString("dd/MM/yy"); } set { date = DateTime.Parse(value); } }
+        public string Subject { get; set; }
+        public int Type { get; set; }
+        public int Total { get; set; }
+        public int Attended { get; set; }
+        public DateTime date;
     }
 
     public class MessagesData

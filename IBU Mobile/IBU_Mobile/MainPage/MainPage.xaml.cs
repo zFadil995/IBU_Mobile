@@ -44,7 +44,8 @@ namespace IBU_Mobile
                                 Activator.CreateInstance(((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType));
                     }
                     MasterPage.IBUListView.SelectedItem = null;
-                    IsPresented = false;
+                    if (Device.OS != TargetPlatform.Windows)
+                        IsPresented = false;
                 }
                 MasterPage.IBUListView.IsEnabled = true;
             };
