@@ -166,6 +166,108 @@
       <Name>IBU_Mobile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\notdone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\overview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splash_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\student.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\studentid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\subject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\academic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\attendance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\attendancewhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\documentwhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\en.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\failure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\financials.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lmswhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\messagesnew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\messageswhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nationality.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
