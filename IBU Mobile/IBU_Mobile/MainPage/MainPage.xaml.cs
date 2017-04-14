@@ -24,7 +24,7 @@ namespace IBU_Mobile
                 {
                     Detail = new NavigationPage(new MessagesPage());
                 }
-                if (IsPresented)
+                if (Device.OS != TargetPlatform.Windows)
                     IsPresented = false;
             };
             MasterPage.IBUMessagesIcon.GestureRecognizers.Add(messagesTapped);
