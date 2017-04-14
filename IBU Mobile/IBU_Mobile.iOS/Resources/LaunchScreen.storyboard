@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
@@ -16,16 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="23" misplaced="YES">
                                 <rect key="frame" x="270" y="270" width="60" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0.14509803921568629" blue="0.6470588235294118" alpha="1"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
                         </constraints>
+                        <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.52549019607843139" blue="1" alpha="1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,6 +35,46 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="academic.png" width="48" height="48"/>
+        <image name="attendance.png" width="48" height="48"/>
+        <image name="attendancewhite.png" width="48" height="48"/>
+        <image name="ba.png" width="48" height="48"/>
+        <image name="banner.png" width="1430" height="752"/>
+        <image name="blank.png" width="320" height="320"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="document.png" width="48" height="48"/>
+        <image name="documentwhite.png" width="48" height="48"/>
+        <image name="done.png" width="48" height="48"/>
+        <image name="down.png" width="48" height="48"/>
+        <image name="email.png" width="48" height="48"/>
+        <image name="en.png" width="48" height="48"/>
+        <image name="failure.png" width="128" height="128"/>
+        <image name="financials.png" width="48" height="48"/>
+        <image name="grades.png" width="48" height="48"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="icon.png" width="192" height="192"/>
+        <image name="lms.png" width="48" height="48"/>
+        <image name="lmswhite.png" width="48" height="48"/>
+        <image name="loading.png" width="128" height="128"/>
+        <image name="logo.png" width="1320" height="752"/>
+        <image name="logout.png" width="48" height="48"/>
+        <image name="messages.png" width="48" height="48"/>
+        <image name="messagesnew.png" width="48" height="48"/>
+        <image name="messageswhite.png" width="48" height="48"/>
+        <image name="nationality.png" width="48" height="48"/>
+        <image name="notdone.png" width="48" height="48"/>
+        <image name="overview.png" width="48" height="48"/>
+        <image name="splash_icon.png" width="400" height="400"/>
+        <image name="student.png" width="48" height="48"/>
+        <image name="studentid.png" width="48" height="48"/>
+        <image name="subject.png" width="48" height="48"/>
+        <image name="success.png" width="128" height="128"/>
+        <image name="tr.png" width="48" height="48"/>
+        <image name="up.png" width="48" height="48"/>
     </resources>
 </document>
