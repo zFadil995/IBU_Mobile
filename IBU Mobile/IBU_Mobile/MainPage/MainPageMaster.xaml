@@ -8,9 +8,9 @@
     <StackLayout Orientation="Vertical" BackgroundColor="#1A6CBF" Spacing="0" Margin="0">
         <RelativeLayout x:Name="BannerLayout"  HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
             <Image x:Name="BannerImage" Source="banner.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"/>
-            <controls:CircleImage x:Name="StudentImage" HorizontalOptions="Center" VerticalOptions="Start" Source="blank.png" Aspect="AspectFit"  BorderColor="White" BorderThickness="1" 
+            <controls:CircleImage x:Name="StudentImage" HorizontalOptions="Center" VerticalOptions="Start" Source="blank.png" Aspect="AspectFill"  BorderColor="White" BorderThickness="1" 
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.8, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.4, Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.4, Constant=0}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
@@ -42,8 +42,8 @@
         </RelativeLayout>
 
         <StackLayout BackgroundColor="#D0A650" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0" HeightRequest="1"></StackLayout>
-        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="7, 15, 0, 0">
-            <ListView x:Name="IBUMainMenu" SeparatorVisibility="None"  HasUnevenRows="true" VerticalOptions="Start" Margin="0">
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="7, 15, 0, 0"  BackgroundColor="#1A6CBF">
+            <ListView x:Name="IBUMainMenu" SeparatorVisibility="None"  HasUnevenRows="true" VerticalOptions="Start" Margin="0"  BackgroundColor="#1A6CBF">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
