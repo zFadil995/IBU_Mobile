@@ -22,7 +22,7 @@ namespace IBU_Mobile
             {
                 if (((NavigationPage) Detail).CurrentPage.GetType() != typeof(MessagesPage))
                 {
-                    Detail = new NavigationPage(new MessagesPage());
+                    Detail = new NavigationPage(new MessagesPage()){BarBackgroundColor = Color.FromHex("#0052A5")};
                 }
                 if (Device.OS != TargetPlatform.Windows)
                     IsPresented = false;
@@ -41,7 +41,8 @@ namespace IBU_Mobile
                         Detail =
                             new NavigationPage(
                                 (Page)
-                                Activator.CreateInstance(((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType));
+                                Activator.CreateInstance(((IBUMenuItem) MasterPage.IBUListView.SelectedItem).TargetType))
+                            { BarBackgroundColor = Color.FromHex("#0052A5") };
                     }
                     MasterPage.IBUListView.SelectedItem = null;
                     if (Device.OS != TargetPlatform.Windows)
@@ -56,7 +57,7 @@ namespace IBU_Mobile
             if (IsPresented == false)
                 if (((NavigationPage) Detail).CurrentPage.GetType() != typeof(OverviewPage))
                 {
-                    Detail = new NavigationPage(new OverviewPage());
+                    Detail = new NavigationPage(new OverviewPage()) { BarBackgroundColor = Color.FromHex("#0052A5") };
                 }
             if (IsPresented)
                 IsPresented = false;
