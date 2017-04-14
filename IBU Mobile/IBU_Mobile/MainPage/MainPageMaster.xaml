@@ -8,7 +8,7 @@
     <StackLayout Orientation="Vertical" BackgroundColor="#1A6CBF" Spacing="0" Margin="0">
         <RelativeLayout x:Name="BannerLayout"  HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0">
             <Image x:Name="BannerImage" Source="banner.png" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"/>
-            <StackLayout x:Name="StudentImageLayout" HorizontalOptions="Center" VerticalOptions="Start"
+            <StackLayout x:Name="StudentImageLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Green"
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.4, Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
