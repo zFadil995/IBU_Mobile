@@ -33,11 +33,11 @@
             </StackLayout>
             <Image x:Name="MessagesIcon" Source="messages.png" HeightRequest="25"
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.15, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.17, Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.15, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.17, Constant=0}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.7, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.68, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Width, Factor=0.85, Constant=0}"><TapGestureRecognizer Tapped="MessagesTapped"></TapGestureRecognizer></Image>
 
