@@ -14,7 +14,7 @@
                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.4, Constant=0}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                    ElementName=BannerImage, Property=Height, Factor=0.15, Constant=0}"
+                    ElementName=BannerImage, Property=Height, Factor=0.2, Constant=0}"
                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
                     ElementName=BannerImage, Property=Height, Factor=0.1, Constant=0}"/>
             <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Spacing="0"
