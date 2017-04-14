@@ -5,8 +5,8 @@
              x:Class="IBU_Mobile.OverviewPage"
              Title="Overview">
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="#0052A5">
-            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+        <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#0052A5">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15" Padding="20">
                 <StackLayout Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Padding="10" Spacing="5">
                         <Image Source="student.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="1"/>

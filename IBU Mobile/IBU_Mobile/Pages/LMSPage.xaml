@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IBU_Mobile.Pages.LMSPage"
              Title="Learning Management System">
-    <ScrollView  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20" BackgroundColor="#0052A5">
-        <StackLayout x:Name="LMSLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15">
+    <ScrollView  Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#0052A5">
+        <StackLayout x:Name="LMSLayout" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="15" Padding="20">
            
         </StackLayout>
     </ScrollView>
