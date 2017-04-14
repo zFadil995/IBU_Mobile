@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="23" misplaced="YES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="23" misplaced="YES">
                                 <rect key="frame" x="270" y="270" width="60" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
@@ -51,7 +51,7 @@
         <image name="down.png" width="48" height="48"/>
         <image name="email.png" width="48" height="48"/>
         <image name="en.png" width="48" height="48"/>
-        <image name="failure.png" width="128" height="128"/>
+        <image name="failure.png" width="32" height="32"/>
         <image name="financials.png" width="48" height="48"/>
         <image name="grades.png" width="48" height="48"/>
         <image name="Icon-76.png" width="76" height="76"/>
@@ -60,7 +60,7 @@
         <image name="icon.png" width="192" height="192"/>
         <image name="lms.png" width="48" height="48"/>
         <image name="lmswhite.png" width="48" height="48"/>
-        <image name="loading.png" width="128" height="128"/>
+        <image name="loading.png" width="32" height="32"/>
         <image name="logo.png" width="1320" height="752"/>
         <image name="logout.png" width="48" height="48"/>
         <image name="messages.png" width="48" height="48"/>
@@ -69,11 +69,11 @@
         <image name="nationality.png" width="48" height="48"/>
         <image name="notdone.png" width="48" height="48"/>
         <image name="overview.png" width="48" height="48"/>
-        <image name="splash_icon.png" width="400" height="400"/>
+        <image name="splash_icon.png" width="200" height="200"/>
         <image name="student.png" width="48" height="48"/>
         <image name="studentid.png" width="48" height="48"/>
         <image name="subject.png" width="48" height="48"/>
-        <image name="success.png" width="128" height="128"/>
+        <image name="success.png" width="32" height="32"/>
         <image name="tr.png" width="48" height="48"/>
         <image name="up.png" width="48" height="48"/>
     </resources>
