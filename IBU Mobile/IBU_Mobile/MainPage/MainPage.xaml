@@ -7,7 +7,7 @@
         <pages:MainPageMaster x:Name="MasterPage"/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage BarBackgroundColor="#0052A5">
+        <NavigationPage BarBackgroundColor="#0052A5" BarTextColor="White">
             <x:Arguments>
                 <pages:OverviewPage />
             </x:Arguments>
