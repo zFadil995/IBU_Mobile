@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using IBU_Mobile.Helpers;
 using IBU_Mobile.Pages;
 using Xamarin.Forms;
@@ -33,13 +34,20 @@ namespace IBU_Mobile
             SetUp();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         private void LogOutTapped(object sender, EventArgs e)
         {
             CurrentApp.Current.LogOutAction.Invoke();
         }
 
-        private void SetUp()
+        private async void SetUp()
         {
+            StudentImage.HeightRequest = await CircleHeight();
+            StudentImage.WidthRequest = await CircleHeight();
             if (IBUData.UserData != null)
             {
                 StudentImage.Source = new UriImageSource
@@ -53,6 +61,15 @@ namespace IBU_Mobile
                 SetMessages();
             }
 
+        }
+
+        private async Task<double> CircleHeight()
+        {
+            while (BannerImage.Height < 0)
+            {
+                await Task.Delay(100);
+            }
+            return BannerImage.Height * 0.4;
         }
         private void SetMessages()
         {
