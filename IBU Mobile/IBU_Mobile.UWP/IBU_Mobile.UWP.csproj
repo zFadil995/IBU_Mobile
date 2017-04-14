@@ -122,9 +122,6 @@
     <Content Include="down.png" />
     <Content Include="email.png" />
     <Content Include="en.png" />
-    <Content Include="face.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="failure.png" />
     <Content Include="financials.png" />
     <Content Include="grades.png" />
