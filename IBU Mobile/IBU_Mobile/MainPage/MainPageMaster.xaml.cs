@@ -34,11 +34,6 @@ namespace IBU_Mobile
             SetUp();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
         private void LogOutTapped(object sender, EventArgs e)
         {
             CurrentApp.Current.LogOutAction.Invoke();
@@ -46,19 +41,19 @@ namespace IBU_Mobile
 
         private async void SetUp()
         {
-            StudentImage.HeightRequest = await CircleHeight();
-            StudentImage.WidthRequest = await CircleHeight();
             if (IBUData.UserData != null)
             {
+                SetMessages();
+                StudentID.Text = IBUData.UserData.StudentID;
+                StudentName.Text = IBUData.UserData.FirstName + " " + IBUData.UserData.LastName;
                 StudentImage.Source = new UriImageSource
                 {
                     Uri = new Uri(IBUData.UserData.ImagePath),
                     CachingEnabled = true,
                     CacheValidity = new TimeSpan(180, 0, 0, 0)
                 };
-                StudentName.Text = IBUData.UserData.FirstName + " " + IBUData.UserData.LastName;
-                StudentID.Text = IBUData.UserData.StudentID;
-                SetMessages();
+                StudentImage.HeightRequest = await CircleHeight();
+                StudentImage.WidthRequest = await CircleHeight();
             }
 
         }
