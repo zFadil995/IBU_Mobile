@@ -117,12 +117,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
+    <Content Include="checkempty.png" />
+    <Content Include="checkfalse.png" />
+    <Content Include="checkfull.png" />
     <Content Include="date.png" />
     <Content Include="datewhite.png" />
     <Content Include="document.png" />
     <Content Include="documentwhite.png" />
     <Content Include="done.png" />
     <Content Include="down.png" />
+    <Content Include="downblack.png" />
     <Content Include="email.png" />
     <Content Include="en.png" />
     <Content Include="face.PNG" />
@@ -185,6 +189,7 @@
     <Content Include="studentid.png" />
     <Content Include="subject.png" />
     <Content Include="success.png" />
+    <Content Include="swap.png" />
     <Content Include="tr.png" />
     <Content Include="up.png" />
   </ItemGroup>

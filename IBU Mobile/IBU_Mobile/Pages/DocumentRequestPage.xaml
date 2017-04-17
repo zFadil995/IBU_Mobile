@@ -12,16 +12,37 @@
                 </StackLayout>
                 <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="2" BackgroundColor="#F0C670"></StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White" Padding="10, 10, 10, 10">
-                    <Button x:Name="DocumentTypeButton" Text="STUDENT DOCUMENT" TextColor="Black" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="DocumentTypeClicked"></Button>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="#777777" Padding="1" Margin="5">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="White">
+                            <Label x:Name="DocumentType" Text="STUDENT DOCUMENT" FontSize="15"  TextColor="Black" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                            <Image x:Name="DocumentTypePicker" Source="swap.png" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="20" Margin="5"/>
+                        </StackLayout>
+                    </StackLayout>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Button x:Name="TRButton" Text="TR" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="TRClicked"></Button>
-                        <Button x:Name="ENButton" Text="EN" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="ENClicked"></Button>
-                        <Button x:Name="BAButton" Text="BA" TextColor="Black" BackgroundColor="#CCCCCC" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="BAClicked"></Button>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Label  Text="TR" FontSize="17"  TextColor="Black" BackgroundColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="26" WidthRequest="26">
+                                <Image x:Name="TRImage" Source="checkempty.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="22" WidthRequest="22" Margin="2"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Label  Text="EN" FontSize="17"  TextColor="Black" BackgroundColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="26" WidthRequest="26">
+                                <Image x:Name="ENImage" Source="checkempty.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="22" WidthRequest="22" Margin="2"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Label  Text="BA" FontSize="17"  TextColor="Black" BackgroundColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="26" WidthRequest="26">
+                                <Image x:Name="BAImage" Source="checkempty.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="22" WidthRequest="22" Margin="2"/>
+                            </StackLayout>
+                        </StackLayout>
                     </StackLayout>
                     <Entry x:Name="ExplanationEntry" Placeholder="Explanation" PlaceholderColor="#777777" IsPassword="False" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0"></Entry>
-                    <Button Text="REQUEST A DOCUMENT" TextColor="Black" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="DocumentRequestClicked"></Button>
+                    <Button Text="REQUEST A DOCUMENT" TextColor="Black" BackgroundColor="White" BorderColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="5, 0, 5, 0" Clicked="DocumentRequestClicked"></Button>
                 </StackLayout>
             </StackLayout>
+
 
             <StackLayout x:Name="PreviousRequestsLayout" Orientation="Vertical"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" Spacing="0">
                 <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#D0A650" Spacing="5">

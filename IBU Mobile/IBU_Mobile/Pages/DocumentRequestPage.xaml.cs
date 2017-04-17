@@ -19,6 +19,7 @@ namespace IBU_Mobile.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DocumentRequestPage : ContentPage
     {
+        private bool TR = false, EN = false, BA = false;
         public DocumentRequestPage()
         {
             InitializeComponent();
@@ -39,6 +40,81 @@ namespace IBU_Mobile.Pages
             expandPreviousImage.GestureRecognizers.Add(new TapGestureRecognizer()
             {
                 Command = new Command(expandPreviousRequests)
+            });
+            TRImage.GestureRecognizers.Clear();
+            TRImage.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command((() =>
+                {
+                    if (!TR)
+                    {
+                        TR = !TR;
+                        TRImage.Source = "checkfull.png";
+                    }
+                    else if (TR)
+                    {
+                        TR = !TR;
+                        TRImage.Source = "checkempty.png";
+                    }
+                }))
+            });
+            ENImage.GestureRecognizers.Clear();
+            ENImage.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command((() =>
+                {
+                    if (!EN)
+                    {
+                        EN = !EN;
+                        ENImage.Source = "checkfull.png";
+                    }
+                    else if (EN)
+                    {
+                        EN = !EN;
+                        ENImage.Source = "checkempty.png";
+                    }
+                }))
+            });
+            BAImage.GestureRecognizers.Clear();
+            BAImage.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command((() =>
+                {
+                    if (!BA)
+                    {
+                        BA = !BA;
+                        BAImage.Source = "checkfull.png";
+                    }
+                    else if (BA)
+                    {
+                        BA = !BA;
+                        BAImage.Source = "checkempty.png";
+                    }
+                }))
+            });
+            DocumentTypePicker.GestureRecognizers.Clear();
+            DocumentTypePicker.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command((() =>
+                {
+                    if (DocumentType.Text == "STUDENT DOCUMENT")
+                    {
+                        DocumentType.Text = "TRANSCRIPT";
+                        TRImage.Source = "checkfalse.png";
+                        TRImage.IsEnabled = false;
+                        BAImage.Source = "checkfalse.png";
+                        BAImage.IsEnabled = false;
+
+                    }
+                    else if (DocumentType.Text == "TRANSCRIPT")
+                    {
+                        DocumentType.Text = "STUDENT DOCUMENT";
+                        TRImage.Source = (TR)? "checkfull.png" : "checkempty.png";
+                        TRImage.IsEnabled = true;
+                        BAImage.Source = (BA) ? "checkfull.png" : "checkempty.png";
+                        BAImage.IsEnabled = true;
+                    }
+                }))
             });
         }
 
@@ -318,40 +394,23 @@ namespace IBU_Mobile.Pages
             }
         }
 
-        private void DocumentTypeClicked(object sender, EventArgs e)
-        {
-            if (DocumentTypeButton.Text == "STUDENT DOCUMENT")
-            {
-                DocumentTypeButton.Text = "TRANSCRIPT";
-                TRButton.IsEnabled = false;
-                BAButton.IsEnabled = false;
-            }
-            else if (DocumentTypeButton.Text == "TRANSCRIPT")
-            {
-                DocumentTypeButton.Text = "STUDENT DOCUMENT";
-                TRButton.IsEnabled = true;
-                BAButton.IsEnabled = true;
-            }
-        }
-
         private void DocumentRequestClicked(object sender, EventArgs e)
         {
-            if (DocumentTypeButton.Text == "STUDENT DOCUMENT")
+            if (DocumentType.Text == "STUDENT DOCUMENT")
             {
-                RequestDocument(1, (TRButton.BackgroundColor == Color.White)?1:0, (ENButton.BackgroundColor == Color.White) ? 1 : 0, (BAButton.BackgroundColor == Color.White) ? 1 : 0, ExplanationEntry.Text);
+                RequestDocument(1, (TR)?1:0, (EN) ? 1 : 0, (BA) ? 1 : 0, ExplanationEntry.Text);
             }
-            else if (DocumentTypeButton.Text == "TRANSCRIPT")
+            else if (DocumentType.Text == "TRANSCRIPT")
             {
-                RequestDocument(2, 0, (ENButton.BackgroundColor == Color.White) ? 1 : 0, 0, ExplanationEntry.Text);
+                RequestDocument(2, 0, (EN) ? 1 : 0, 0, ExplanationEntry.Text);
             }
         }
 
         private async void RequestDocument(int type, int tr, int en, int ba, string description)
         {
-            DocumentTypeButton.IsEnabled = false;
-            TRButton.IsEnabled = false;
-            ENButton.IsEnabled = false;
-            BAButton.IsEnabled = false;
+            TRImage.IsEnabled = false;
+            ENImage.IsEnabled = false;
+            BAImage.IsEnabled = false;
             ExplanationEntry.IsEnabled = false;
             if (tr == 0 && en == 0 && ba == 0)
             {
@@ -396,47 +455,10 @@ namespace IBU_Mobile.Pages
                     await DisplayAlert("Warning", "An error occured while requesting your document", "OK");
                 }
             }
-            DocumentTypeButton.IsEnabled = true;
-            TRButton.IsEnabled = true;
-            ENButton.IsEnabled = true;
-            BAButton.IsEnabled = true;
+            TRImage.IsEnabled = true;
+            ENImage.IsEnabled = true;
+            BAImage.IsEnabled = true;
             ExplanationEntry.IsEnabled = true;
-        }
-
-        private void TRClicked(object sender, EventArgs e)
-        {
-            if (((Button) sender).BackgroundColor == Color.FromHex("#CCCCCC"))
-            {
-                ((Button) sender).BackgroundColor = Color.White;
-            }
-            else if (((Button)sender).BackgroundColor == Color.White)
-            {
-                ((Button) sender).BackgroundColor = Color.FromHex("#CCCCCC");
-            }
-        }
-
-        private void ENClicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == Color.FromHex("#CCCCCC"))
-            {
-                ((Button)sender).BackgroundColor = Color.White;
-            }
-            else if (((Button)sender).BackgroundColor == Color.White)
-            {
-                ((Button)sender).BackgroundColor = Color.FromHex("#CCCCCC");
-            }
-        }
-
-        private void BAClicked(object sender, EventArgs e)
-        {
-            if (((Button)sender).BackgroundColor == Color.FromHex("#CCCCCC"))
-            {
-                ((Button)sender).BackgroundColor = Color.White;
-            }
-            else if (((Button)sender).BackgroundColor == Color.White)
-            {
-                ((Button)sender).BackgroundColor = Color.FromHex("#CCCCCC");
-            }
         }
 
         private class ResultData
