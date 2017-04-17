@@ -24,8 +24,7 @@ namespace IBU_Mobile
                 {
                     Detail = new NavigationPage(new MessagesPage()){BarBackgroundColor = Color.FromHex("#0052A5"), BarTextColor = Color.White };
                 }
-                if (Device.OS != TargetPlatform.Windows)
-                    IsPresented = false;
+                IsPresented = false;
             };
             MasterPage.IBUMessagesIcon.GestureRecognizers.Add(messagesTapped);
 
@@ -45,8 +44,7 @@ namespace IBU_Mobile
                             { BarBackgroundColor = Color.FromHex("#0052A5"), BarTextColor = Color.White};
                     }
                     MasterPage.IBUListView.SelectedItem = null;
-                    if (Device.OS != TargetPlatform.Windows)
-                        IsPresented = false;
+                    IsPresented = false;
                 }
                 MasterPage.IBUListView.IsEnabled = true;
             };

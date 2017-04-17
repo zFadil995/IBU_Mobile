@@ -22,11 +22,13 @@ namespace IBU_Mobile
         public LoginPage()
         {
             InitializeComponent();
+            StudentID.Completed += SignIn;
+            Password.Completed += SignIn;
         }
 
         private async void SignIn(object sender, EventArgs e)
         {
-            ((Button) sender).IsEnabled = false;
+            ((View) sender).IsEnabled = false;
             try
             {
                 var client = new RestClient("http://54.244.213.136/login.php");
@@ -53,7 +55,7 @@ namespace IBU_Mobile
                 await DisplayAlert("Warning", "Internet Connection Failed", "OK");
             }
 
-            ((Button) sender).IsEnabled = true;
+            ((View) sender).IsEnabled = true;
         }
     }
 

@@ -540,7 +540,7 @@ namespace IBU_Mobile
                                 HorizontalOptions = LayoutOptions.FillAndExpand,
                                 VerticalOptions = LayoutOptions.Start,
                                 BackgroundColor = Color.FromHex("#EEEEEE"),
-                                Margin = new Thickness(0, 5, 0, 0),
+                                Margin = new Thickness(0, 10, 0, 0),
                                 Padding = new Thickness(1, 1, 1, 1),
                                 Children =
                                 {

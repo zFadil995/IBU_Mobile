@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
              x:Class="IBU_Mobile.MainPage"
+             windows:Page.ToolbarPlacement="Top"     
              xmlns:pages="clr-namespace:IBU_Mobile;assembly=IBU_Mobile">
     <MasterDetailPage.Master>
         <pages:MainPageMaster x:Name="MasterPage"/>

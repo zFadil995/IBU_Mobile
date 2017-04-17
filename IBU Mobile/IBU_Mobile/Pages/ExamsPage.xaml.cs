@@ -157,13 +157,25 @@ namespace IBU_Mobile
                         });
 
                         examsGrid.Children.Add(
-                            new Label()
+                            new StackLayout()
                             {
-                                Text = "Course",
-                                FontAttributes = FontAttributes.Bold,
-                                TextColor = Color.FromHex("#555555"),
-                                FontSize = 12,
-                                Margin = 2
+                                Orientation = StackOrientation.Horizontal,
+                                Children =
+                                {
+                                    new Image()
+                                    {
+                                        Source = "academic.png",
+                                        HeightRequest = 15
+                                    },
+                                    new Label()
+                                    {
+                                        Text = "Course",
+                                        FontAttributes = FontAttributes.Bold,
+                                        TextColor = Color.FromHex("#555555"),
+                                        FontSize = 12,
+                                        Margin = 2
+                                    }
+                                }
                             },
                             0, 0
                         );
