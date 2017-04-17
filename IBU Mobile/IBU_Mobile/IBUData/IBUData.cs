@@ -529,7 +529,7 @@ namespace IBU_Mobile
         public string CourseCode { get; set; }
         public string Course { get; set; }
         public string Location { get; set; }
-        public string Time { get { return time.ToString("dd/MM/yyyy HH:MM"); } set { time = DateTime.Parse(value); } }
+        public string Time { get { return time.ToString("dd/MM/yyyy HH:mm"); } set { time = DateTime.Parse(value); } }
         public DateTime time;
     }
 
@@ -583,7 +583,7 @@ namespace IBU_Mobile
         public string Title { get; set; }
         public string Course { get; set; }
         public string Description { get; set; }
-        public string Deadline { get { return deadline.ToString("dd/MM/yyyy HH:MM"); } set { deadline = DateTime.Parse(value); } }
+        public string Deadline { get { return deadline.ToString("dd/MM/yyyy HH:mm"); } set { deadline = DateTime.Parse(value); } }
         public DateTime deadline;
     }
 

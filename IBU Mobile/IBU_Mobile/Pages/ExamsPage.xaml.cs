@@ -104,7 +104,7 @@ namespace IBU_Mobile
                                                 },
                                                 new Label()
                                                 {
-                                                    Text = term.Title,
+                                                    Text = term.Title + " Dates",
                                                     FontSize = 14,
                                                     TextColor = Color.White,
                                                     VerticalTextAlignment = TextAlignment.Center,
@@ -288,7 +288,7 @@ namespace IBU_Mobile
                             examsGrid.Children.Add(
                                 new Label()
                                 {
-                                    Text = exam.time.ToString("HH:MM"),
+                                    Text = exam.time.ToString("HH:mm"),
                                     HorizontalOptions = LayoutOptions.CenterAndExpand,
                                     HorizontalTextAlignment = TextAlignment.Center,
                                     VerticalOptions = LayoutOptions.CenterAndExpand,
