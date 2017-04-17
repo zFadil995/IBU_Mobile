@@ -85,7 +85,7 @@ namespace IBU_Mobile
                         {
                             new Image()
                             {
-                                Source = "academic.png",
+                                Source = "academicwhite.png",
                                 HeightRequest = 20,
                                 Margin = new Thickness(1),
                                 VerticalOptions = LayoutOptions.FillAndExpand,

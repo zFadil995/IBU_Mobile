@@ -118,7 +118,7 @@ namespace IBU_Mobile
                                     {
                                         new Image()
                                         {
-                                            Source = "attendancewhite.png",
+                                            Source = "academicwhite.png",
                                             HeightRequest = 20,
                                             Margin = new Thickness(1),
                                             VerticalOptions = LayoutOptions.FillAndExpand,
@@ -276,7 +276,12 @@ namespace IBU_Mobile
                             new Label()
                             {
                                 Text = attendanceDetail.Date,
-                                TextColor = (attendanceDetail.Attended == attendanceDetail.Total)?Color.FromHex("#777777"):(( (double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7)?Color.Orange:Color.Red,
+                                TextColor =
+                                    (attendanceDetail.Attended == attendanceDetail.Total)
+                                        ? Color.FromHex("#777777")
+                                        : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7)
+                                            ? Color.Orange
+                                            : Color.Red,
                                 FontSize = 12
                             },
                             0, row
@@ -285,7 +290,12 @@ namespace IBU_Mobile
                             new Label()
                             {
                                 Text = attendanceDetail.Subject,
-                                TextColor = (attendanceDetail.Attended == attendanceDetail.Total) ? Color.FromHex("#777777") : (( (double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7) ? Color.Orange : Color.Red,
+                                TextColor =
+                                    (attendanceDetail.Attended == attendanceDetail.Total)
+                                        ? Color.FromHex("#777777")
+                                        : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7)
+                                            ? Color.Orange
+                                            : Color.Red,
                                 FontSize = 12
                             },
                             1, row
@@ -296,7 +306,12 @@ namespace IBU_Mobile
                                 Text = attendanceDetail.Total.ToString(),
                                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                                 HorizontalTextAlignment = TextAlignment.Center,
-                                TextColor = (attendanceDetail.Attended == attendanceDetail.Total) ? Color.FromHex("#777777") : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7) ? Color.Orange : Color.Red,
+                                TextColor =
+                                    (attendanceDetail.Attended == attendanceDetail.Total)
+                                        ? Color.FromHex("#777777")
+                                        : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7)
+                                            ? Color.Orange
+                                            : Color.Red,
                                 FontSize = 12
                             },
                             2, row
@@ -307,7 +322,12 @@ namespace IBU_Mobile
                                 Text = attendanceDetail.Attended.ToString(),
                                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                                 HorizontalTextAlignment = TextAlignment.Center,
-                                TextColor = (attendanceDetail.Attended == attendanceDetail.Total) ? Color.FromHex("#777777") : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7) ? Color.Orange : Color.Red,
+                                TextColor =
+                                    (attendanceDetail.Attended == attendanceDetail.Total)
+                                        ? Color.FromHex("#777777")
+                                        : (((double) attendanceDetail.Attended / attendanceDetail.Total) >= 0.7)
+                                            ? Color.Orange
+                                            : Color.Red,
                                 FontSize = 12
                             },
                             3, row
@@ -329,6 +349,143 @@ namespace IBU_Mobile
                         );
                     }
 
+                    RelativeLayout totalLayout = new RelativeLayout()
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
+                        BackgroundColor = Color.FromHex("#CCCCCC"),
+                        HeightRequest = 20,
+                    };
+
+                    totalLayout.Children.Add(new StackLayout()
+                        {
+                            BackgroundColor =
+                                (((lecture + lab) / (lecturehours + labhours)) >= 0.95)
+                                    ? Color.Green
+                                    : (((lecture + lab) / (lecturehours + labhours)) >= 0.7) ? Color.Orange : Color.Red,
+                            HorizontalOptions = LayoutOptions.Fill,
+                            VerticalOptions = LayoutOptions.Fill
+                        },
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent(
+                            (parent) =>
+                                parent.Width * ((lecture + lab) / (lecturehours + labhours)) - parent.Height * 0.1),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+                    totalLayout.Children.Add(new Label()
+                        {
+                            TextColor = Color.White,
+                            Text = (double) (int) (((lecture + lab) / (lecturehours + labhours)) * 10000) / 100 + " %",
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            VerticalTextAlignment = TextAlignment.Center
+                        },
+                        Constraint.RelativeToParent((parent) => 0),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+
+                    RelativeLayout lectureLayout = new RelativeLayout()
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
+                        BackgroundColor = Color.FromHex("#CCCCCC"),
+                        HeightRequest = 20,
+                    };
+
+                    lectureLayout.Children.Add(new StackLayout()
+                        {
+                            BackgroundColor =
+                                ((lecture / lecturehours) >= 0.95)
+                                    ? Color.Green
+                                    : ((lecture / lecturehours) >= 0.7) ? Color.Orange : Color.Red,
+                            HorizontalOptions = LayoutOptions.Fill,
+                            VerticalOptions = LayoutOptions.Fill
+                        },
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent(
+                            (parent) => parent.Width * (lecture / lecturehours) - parent.Height * 0.1),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+                    lectureLayout.Children.Add(new Label()
+                        {
+                            TextColor = Color.White,
+                            Text = (double) (int) ((lecture / lecturehours) * 10000) / 100 + " %",
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            VerticalTextAlignment = TextAlignment.Center
+                        },
+                        Constraint.RelativeToParent((parent) => 0),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+
+                    RelativeLayout labsLayout = new RelativeLayout()
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
+                        BackgroundColor = Color.FromHex("#CCCCCC"),
+                        HeightRequest = 20,
+                    };
+
+                    labsLayout.Children.Add(new StackLayout()
+                        {
+                            BackgroundColor =
+                                ((lab / labhours) >= 0.95)
+                                    ? Color.Green
+                                    : ((lab / labhours) >= 0.7) ? Color.Orange : Color.Red,
+                            HorizontalOptions = LayoutOptions.Fill,
+                            VerticalOptions = LayoutOptions.Fill
+                        },
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width * (lab / labhours) - parent.Height * 0.1),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+                    labsLayout.Children.Add(new Label()
+                        {
+                            TextColor = Color.White,
+                            Text = (double) (int) ((lab / labhours) * 10000) / 100 + " %",
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            VerticalTextAlignment = TextAlignment.Center
+                        },
+                        Constraint.RelativeToParent((parent) => 0),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.9)
+                    );
+
+
+                    RelativeLayout separateLayout = new RelativeLayout()
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
+                        HeightRequest = 20
+                    };
+
+                    separateLayout.Children.Add(lectureLayout,
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width * 0.5 - parent.Height * 0.1),
+                        Constraint.RelativeToParent((parent) => parent.Height)
+                    );
+
+                    separateLayout.Children.Add(labsLayout,
+                        Constraint.RelativeToParent((parent) => parent.Width * 0.5 + parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Height * 0.05),
+                        Constraint.RelativeToParent((parent) => parent.Width * 0.5 - parent.Height * 0.1),
+                        Constraint.RelativeToParent((parent) => parent.Height)
+                    );
+
+
                     courseLayout.Children.Add(new StackLayout()
                     {
                         Orientation = StackOrientation.Vertical,
@@ -339,12 +496,51 @@ namespace IBU_Mobile
                         Spacing = 0,
                         Children =
                         {
+                            new Label()
+                            {
+                                Text = "Total Attendance",
+                                TextColor = Color.Black,
+                                HorizontalOptions = LayoutOptions.FillAndExpand,
+                                HorizontalTextAlignment = TextAlignment.Center,
+                                VerticalOptions = LayoutOptions.Center,
+                                VerticalTextAlignment = TextAlignment.Center,
+                            },
+                            totalLayout,
+                            new StackLayout()
+                            {
+                                Orientation = StackOrientation.Horizontal,
+                                HorizontalOptions = LayoutOptions.FillAndExpand,
+                                VerticalOptions = LayoutOptions.Start,
+                                Children =
+                                {
+                                    new Label()
+                                    {
+                                        Text = "Lectures",
+                                        TextColor = Color.Black,
+                                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                                        HorizontalTextAlignment = TextAlignment.Center,
+                                        VerticalOptions = LayoutOptions.Center,
+                                        VerticalTextAlignment = TextAlignment.Center
+                                    },
+                                    new Label()
+                                    {
+                                        Text = "Labs",
+                                        TextColor = Color.Black,
+                                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                                        HorizontalTextAlignment = TextAlignment.Center,
+                                        VerticalOptions = LayoutOptions.Center,
+                                        VerticalTextAlignment = TextAlignment.Center
+                                    }
+                                }
+                            },
+                            separateLayout,
                             new StackLayout()
                             {
                                 Orientation = StackOrientation.Vertical,
                                 HorizontalOptions = LayoutOptions.FillAndExpand,
                                 VerticalOptions = LayoutOptions.Start,
                                 BackgroundColor = Color.FromHex("#EEEEEE"),
+                                Margin = new Thickness(0, 2, 0, 0),
                                 Padding = new Thickness(1, 1, 1, 1),
                                 Children =
                                 {

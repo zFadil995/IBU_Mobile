@@ -25,9 +25,10 @@ namespace IBU_Mobile
             {
                     new IBUMenuItem { IconPath = "overview.png", PageTitle = "Overview", TargetType = typeof(OverviewPage)},
                     new IBUMenuItem { IconPath = "grades.png", PageTitle = "Grades", TargetType = typeof(GradesPage)},
+                    new IBUMenuItem { IconPath = "date.png", PageTitle = "Exam Dates", TargetType = typeof(ExamsPage)},
                     new IBUMenuItem { IconPath = "attendance.png", PageTitle = "Attendance", TargetType = typeof(AttendancePage)},
                     new IBUMenuItem { IconPath = "messages.png", PageTitle = "Messages", TargetType = typeof(MessagesPage)},
-                    new IBUMenuItem { IconPath = "lms.png", PageTitle = "LMS", TargetType = typeof(LMSPage)},
+                    new IBUMenuItem { IconPath = "academic.png", PageTitle = "LMS", TargetType = typeof(LMSPage)},
                     new IBUMenuItem { IconPath = "document.png", PageTitle = "Document Request", TargetType = typeof(DocumentRequestPage)},
                 });
             

@@ -84,6 +84,15 @@ namespace IBU_Mobile.Helpers
             set { AppSettings.AddOrUpdateValue<string>(_lmsData, value); }
         }
 
+        private const string _examsData = "examsData";
+        private static readonly string _examsDataDefault = String.Empty;
+
+        public static string ExamsData
+        {
+            get { return AppSettings.GetValueOrDefault<string>(_examsData, _examsDataDefault); }
+            set { AppSettings.AddOrUpdateValue<string>(_examsData, value); }
+        }
+
         public static void ClearSettings()
         {
             Token = string.Empty;
@@ -93,6 +102,7 @@ namespace IBU_Mobile.Helpers
             AttendanceData = string.Empty;
             MessagesData = string.Empty;
             LMSData = string.Empty;
+            ExamsData = string.Empty;
             DocumentsData = string.Empty;
         }
 

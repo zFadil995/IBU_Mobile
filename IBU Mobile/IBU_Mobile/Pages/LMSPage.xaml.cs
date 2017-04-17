@@ -120,7 +120,7 @@ namespace IBU_Mobile.Pages
                                     {
                                         new Image()
                                         {
-                                            Source = "lmswhite.png",
+                                            Source = "academicwhite.png",
                                             HeightRequest = 20,
                                             Margin = new Thickness(1),
                                             VerticalOptions = LayoutOptions.FillAndExpand,

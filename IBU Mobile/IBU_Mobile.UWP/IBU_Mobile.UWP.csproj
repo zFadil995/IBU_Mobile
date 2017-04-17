@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="academic.png" />
+    <Content Include="academicwhite.png" />
     <Content Include="attendance.png" />
     <Content Include="attendancewhite.png" />
     <Content Include="ba.png" />
@@ -116,20 +117,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="blank.png" />
+    <Content Include="date.png" />
+    <Content Include="datewhite.png" />
     <Content Include="document.png" />
     <Content Include="documentwhite.png" />
     <Content Include="done.png" />
     <Content Include="down.png" />
     <Content Include="email.png" />
     <Content Include="en.png" />
+    <Content Include="face.PNG" />
     <Content Include="failure.png" />
     <Content Include="financials.png" />
     <Content Include="grades.png" />
     <Content Include="icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="lms.png" />
-    <Content Include="lmswhite.png" />
     <Content Include="loading.png" />
     <Content Include="logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -178,6 +180,7 @@
     <Content Include="splash_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="splash_screen.xml" />
     <Content Include="student.png" />
     <Content Include="studentid.png" />
     <Content Include="subject.png" />

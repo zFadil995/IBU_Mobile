@@ -19,6 +19,7 @@ namespace IBU_Mobile
         public static UserData UserData = new UserData();
         public static OverviewData OverviewData = new OverviewData();
         public static GradesData GradesData = new GradesData();
+        public static ExamsData ExamsData = new ExamsData();
         public static AttendanceData AttendanceData = new AttendanceData();
         public static MessagesData MessagesData = new MessagesData();
         public static LMSData LMSData = new LMSData();
@@ -26,6 +27,7 @@ namespace IBU_Mobile
 
         public static ToolbarItem OverviewToolbar = new ToolbarItem("Old Data", "failure.png", UpdateOverview);
         public static ToolbarItem GradesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateGrades);
+        public static ToolbarItem ExamsToolbar = new ToolbarItem("Old Data", "failure.png", UpdateExams);
         public static ToolbarItem AttendanceToolbar = new ToolbarItem("Old Data", "failure.png", UpdateAttendance);
         public static ToolbarItem MessagesToolbar = new ToolbarItem("Old Data", "failure.png", UpdateMessages);
         public static ToolbarItem LMSToolbar = new ToolbarItem("Old Data", "failure.png", UpdateLMS);
@@ -36,6 +38,7 @@ namespace IBU_Mobile
             SetUpUser();
             SetUpOverview();
             SetUpGrades();
+            SetUpExams();
             SetUpAttendace();
             SetUpMessages();
             SetUpLMS();
@@ -47,6 +50,7 @@ namespace IBU_Mobile
             UpdateUser();
             UpdateOverview();
             UpdateGrades();
+            UpdateExams();
             UpdateAttendance();
             UpdateMessages();
             UpdateLMS();
@@ -196,6 +200,59 @@ namespace IBU_Mobile
                 string exception = e.Message;
             }
         }
+
+        public static void SetUpExams()
+        {
+            ExamsData = JsonConvert.DeserializeObject<ExamsData>(Settings.ExamsData);
+            if (ExamsData != null)
+            {
+                foreach (Terms term in ExamsData.Terms)
+                {
+                    term.Exams = term.Exams.OrderBy(c => c.time).ToArray();
+                }
+            }
+        }
+
+        public static async void UpdateExams()
+        {
+            try
+            {
+                ExamsToolbar.Icon = "loading.png";
+                ExamsToolbar.Text = "Loading Data";
+                var client = new RestClient("http://54.244.213.136/exams.php");
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                if (ExamsData?.LastModified != null)
+                    request.AddParameter("LastModified", ExamsData.LastModified, ParameterType.GetOrPost);
+                request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
+                IRestResponse response = await client.Execute(request);
+                string data = response.Content;
+                ExamsData tempExamsData = JsonConvert.DeserializeObject<ExamsData>(data);
+                if (tempExamsData.LastModified == "Invalid Token!")
+                {
+                    CurrentApp.Current.LogOutAction.Invoke();
+                    return;
+                }
+                else if (ExamsData?.LastModified == null || Double.Parse(tempExamsData.LastModified) > Double.Parse(ExamsData.LastModified))
+                {
+                    Settings.ExamsData = data;
+                    SetUpExams();
+                    if (CurrentPage.GetType() == typeof(ExamsPage))
+                    {
+                        ((ExamsPage)CurrentPage).SetUpAction.Invoke();
+                    }
+                }
+                ExamsToolbar.Icon = "success.png";
+                ExamsToolbar.Text = "Successfully Loaded";
+            }
+            catch (Exception e)
+            {
+                ExamsToolbar.Icon = "failure.png";
+                ExamsToolbar.Text = "Loading Failed";
+                string exception = e.Message;
+            }
+        }
+
 
         public static void SetUpAttendace()
         {
@@ -452,6 +509,28 @@ namespace IBU_Mobile
         public string Type { get; set; }
         public int Percent { get; set; }
         public int Grade { get; set; }
+    }
+
+
+    public class ExamsData
+    {
+        public string LastModified { get; set; }
+        public Terms[] Terms { get; set; }
+    }
+
+    public class Terms
+    {
+        public string Title { get; set; }
+        public Exams[] Exams { get; set; }
+    }
+
+    public class Exams
+    {
+        public string CourseCode { get; set; }
+        public string Course { get; set; }
+        public string Location { get; set; }
+        public string Time { get { return time.ToString("dd/MM/yyyy HH:MM"); } set { time = DateTime.Parse(value); } }
+        public DateTime time;
     }
 
     public class AttendanceData
