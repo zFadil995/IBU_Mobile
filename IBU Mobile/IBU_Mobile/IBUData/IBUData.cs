@@ -65,7 +65,7 @@ namespace IBU_Mobile
         {
             try
             {
-                var client = new RestClient("http://54.244.213.136/user.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/user.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);
@@ -105,7 +105,7 @@ namespace IBU_Mobile
             {
                 OverviewToolbar.Icon = "loading.png";
                 OverviewToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/overview.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/overview.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (OverviewData?.LastModified != null)
@@ -167,7 +167,7 @@ namespace IBU_Mobile
             {
                 GradesToolbar.Icon = "loading.png";
                 GradesToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/grades.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/grades.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (GradesData?.LastModified != null)
@@ -219,7 +219,7 @@ namespace IBU_Mobile
             {
                 ExamsToolbar.Icon = "loading.png";
                 ExamsToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/exams.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/exams.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (ExamsData?.LastModified != null)
@@ -273,7 +273,7 @@ namespace IBU_Mobile
             {
                 AttendanceToolbar.Icon = "loading.png";
                 AttendanceToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/attendance.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/attendance.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (AttendanceData?.LastModified != null)
@@ -323,7 +323,7 @@ namespace IBU_Mobile
             {
                 MessagesToolbar.Icon = "loading.png";
                 MessagesToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/messages.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/messages.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (MessagesData?.LastModified != null)
@@ -372,7 +372,7 @@ namespace IBU_Mobile
             {
                 LMSToolbar.Icon = "loading.png";
                 LMSToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/lms.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/lms.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (LMSData?.LastModified != null)
@@ -422,7 +422,7 @@ namespace IBU_Mobile
             {
                 DocumentsToolbar.Icon = "loading.png";
                 DocumentsToolbar.Text = "Loading Data";
-                var client = new RestClient("http://54.244.213.136/documents.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/documents.php");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 if (DocumentsData?.LastModified != null)

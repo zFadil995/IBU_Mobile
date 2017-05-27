@@ -424,7 +424,7 @@ namespace IBU_Mobile.Pages
             {
                 try
                 {
-                    var client = new RestClient("http://54.244.213.136/request.php");
+                    var client = new RestClient("http://mobile.ibu.edu.ba/request.php");
                     var request = new RestRequest(Method.POST);
                     request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                     request.AddParameter("Token", Settings.Token, ParameterType.GetOrPost);

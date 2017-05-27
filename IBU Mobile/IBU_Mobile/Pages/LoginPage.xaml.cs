@@ -31,7 +31,7 @@ namespace IBU_Mobile
             ((View) sender).IsEnabled = false;
             try
             {
-                var client = new RestClient("http://54.244.213.136/login.php");
+                var client = new RestClient("http://mobile.ibu.edu.ba/login.php");
                 var request = new RestRequest(Method.POST);
                 //request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
                 request.AddParameter("StudentID", StudentID.Text, ParameterType.GetOrPost);
