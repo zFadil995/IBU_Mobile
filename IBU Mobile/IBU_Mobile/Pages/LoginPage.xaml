@@ -17,7 +17,7 @@
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="2" BackgroundColor="#D0A650" />
                         <Entry x:Name="StudentID" Placeholder="Student ID" PlaceholderColor="#777777" IsPassword="False" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
                         <Entry x:Name="Password" Placeholder="**********" PlaceholderColor="#777777" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 5" />
-                        <Button Text="SIGN IN" TextColor="White" BackgroundColor="#0052A5" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 25" Clicked="SignIn" />
+                        <Button x:Name="SignInButton" Text="SIGN IN" TextColor="White" BackgroundColor="#0052A5" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="15, 20, 15, 25" Clicked="SignIn" />
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="5" BackgroundColor="#D0A650" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="5" BackgroundColor="#D0A650" />

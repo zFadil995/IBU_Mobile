@@ -28,7 +28,8 @@ namespace IBU_Mobile
 
         private async void SignIn(object sender, EventArgs e)
         {
-            ((View) sender).IsEnabled = false;
+            SignInButton.IsEnabled = false;
+            SignInButton.Text = "SIGNING IN";
             try
             {
                 var client = new RestClient("http://mobile.ibu.edu.ba/login.php");
@@ -55,7 +56,8 @@ namespace IBU_Mobile
                 await DisplayAlert("Warning", "Internet Connection Failed", "OK");
             }
 
-            ((View) sender).IsEnabled = true;
+            SignInButton.Text = "SIGN IN";
+            SignInButton.IsEnabled = true;
         }
     }
 
